@@ -1,0 +1,90 @@
+.course-item {
+
+  &-block {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 25px;
+    padding: 30px 25px;
+    background: #fff;
+  }
+}
+
+.course-details {
+  width: 75%;
+
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 15px;
+  }
+
+  &__title {
+    font-size: 24px;
+    font-weight: bold;
+  }
+
+  &__info {
+    display: flex;
+    align-items: center;
+    color: #cbc9c9;
+  }
+
+  &__duration {
+    display: flex;
+    align-items: center;
+    margin-right: 15px;
+    font-size: 12px;
+
+    &-icon {
+      margin-right: 5px;
+      font-size: 18px;
+    }
+  }
+
+  &__created {
+    display: flex;
+    align-items: center;
+    font-size: 12px;
+
+    &-icon {
+      margin-right: 5px;
+      font-size: 18px;
+    }
+  }
+
+  &__description {
+    font-size: 14px;
+    line-height: 20px;
+    color: #515050;
+    text-align: justify;
+  }
+}
+
+.course-actions {
+  display: flex;
+  align-items: center;
+
+  &__edit,
+  &__delete {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px 15px;
+    font-size: 14px;
+    color: #fff;
+    background: #04bbd2;
+    border-radius: 4px;
+    cursor: pointer;
+
+    &-icon {
+      margin-right: 7px;
+      font-size: 20px;
+    }
+  }
+
+  &__edit {
+    margin-right: 10px;
+  }
+}

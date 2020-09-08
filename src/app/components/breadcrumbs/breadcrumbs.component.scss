@@ -1,0 +1,10 @@
+.breadcrumbs {
+  display: flex;
+  align-items: center;
+  height: 70px;
+
+  &-block {
+    font-weight: bold;
+    color: #4e4f50;
+  }
+}

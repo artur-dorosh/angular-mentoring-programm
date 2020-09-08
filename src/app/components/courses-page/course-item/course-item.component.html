@@ -1,0 +1,38 @@
+<div class="course-item">
+  <div class="container">
+    <div class="course-item-block">
+
+      <div class="course-details">
+        <div class="course-details__header">
+          <div class="course-details__title">
+            {{ course.title }}
+          </div>
+          <div class="course-details__info">
+            <div class="course-details__duration">
+              <span class="material-icons course-details__duration-icon">schedule</span>
+              {{ course.duration }}
+            </div>
+
+            <div class="course-details__created">
+              <span class="material-icons course-details__created-icon">today</span>
+              {{ course.creationDate }}
+            </div>
+          </div>
+        </div>
+        <div class="course-details__description">{{ course.description }}</div>
+      </div>
+
+      <div class="course-actions">
+        <div class="course-actions__edit">
+          <span class="material-icons course-actions__edit-icon">create</span>
+          Edit
+        </div>
+        <div class="course-actions__delete" (click)="onDelete()">
+          <span class="material-icons course-actions__delete-icon">delete</span>
+          Delete
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
