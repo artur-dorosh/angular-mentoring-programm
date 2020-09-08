@@ -1,0 +1,16 @@
+<div class="courses-list">
+  <div class="container">
+    <div class="courses-list-block">
+      <div class="add-course-button">
+        <span class="material-icons add-course-button__icon">add</span>
+        Add course
+      </div>
+
+      <ng-container *ngFor="let course of courses">
+        <app-course-item [course]="course" (delete)="deleteItem($event)"></app-course-item>
+      </ng-container>
+
+      <div class="load-more" (click)="loadMore()">Load more</div>
+    </div>
+  </div>
+</div>
