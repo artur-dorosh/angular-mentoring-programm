@@ -1,8 +1,10 @@
+@import "src/assets/styles/variables";
+
 .header {
   display: flex;
   align-items: center;
   height: 70px;
-  background: #1f293b;
+  background: $color-main-dark-blue;
 
   &-block {
     display: flex;
@@ -12,13 +14,17 @@
 
 .authorization {
   display: flex;
-  color: #fff;
+  color: $color-white-100;
 
   .login {
     display: flex;
     align-items: center;
     margin-right: 30px;
     font-size: 16px;
+    background: transparent;
+    border: none;
+    outline: none;
+    cursor: pointer;i
 
     &__icon {
       display: flex;
@@ -32,7 +38,7 @@
     display: flex;
     align-items: center;
     font-size: 16px;
-    color: #fff;
+    color: $color-white-100;
     background: transparent;
     border: none;
     outline: none;

@@ -1,3 +1,5 @@
+@import "src/assets/styles/variables";
+
 .breadcrumbs {
   display: flex;
   align-items: center;
@@ -5,6 +7,6 @@
 
   &-block {
     font-weight: bold;
-    color: #4e4f50;
+    color: $color-grey-80;
   }
 }

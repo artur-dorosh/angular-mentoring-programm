@@ -1,9 +1,9 @@
 <div class="courses">
   <div class="container">
     <div class="courses-block">
-      <app-search></app-search>
+      <app-search (searchQuery)="search($event)"></app-search>
 
-      <app-courses-list></app-courses-list>
+      <app-courses-list [courses]="courses"></app-courses-list>
     </div>
   </div>
 </div>

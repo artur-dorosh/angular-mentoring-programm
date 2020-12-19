@@ -1,6 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { CourseItemComponent } from './course-item.component';
+import { BorderingDirective } from '../../../directives/bordering.directive';
+import { DurationPipe } from '../../../pipes/duration.pipe';
 
 describe('CourseItemComponent', () => {
   let component: CourseItemComponent;
@@ -8,7 +10,11 @@ describe('CourseItemComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ CourseItemComponent ]
+      declarations: [
+        CourseItemComponent,
+        BorderingDirective,
+        DurationPipe
+      ]
     })
     .compileComponents();
   }));
@@ -18,10 +24,11 @@ describe('CourseItemComponent', () => {
     component = fixture.componentInstance;
     component.course = {
       id: 1,
-      title: '',
-      creationDate: '',
-      duration: '',
-      description: ''
+      title: 'mock title',
+      creationDate: '2012-12-12',
+      duration: 86,
+      description: 'mock description',
+      topRated: true,
     };
     fixture.detectChanges();
   });
@@ -31,39 +38,15 @@ describe('CourseItemComponent', () => {
   });
 
   it('should display right data', () => {
-    component.course = {
-      id: 1,
-      title: 'JavaScript. Basic knowledge',
-      creationDate: '9 Nov, 2018',
-      duration: '1h 20min',
-      description: 'Learn about where you can find course descriptions, what information they include, how they work, ' +
-        'and detail about various components of a course description. Learn about where you can find course descriptions, what ' +
-        'information they include, how they work, and detail about various components of a course description.'
-    };
-    fixture.detectChanges();
-
-    expect(fixture.nativeElement.querySelector('.course-details__title').innerText).toBe('JavaScript. Basic knowledge');
-    expect(fixture.nativeElement.querySelector('.course-details__duration').innerText).toBe('schedule\n1h 20min');
-    expect(fixture.nativeElement.querySelector('.course-details__created').innerText).toBe('today\n9 Nov, 2018');
-    expect(fixture.nativeElement.querySelector('.course-details__description').innerText).toBe('Learn about where you can find ' +
-      'course descriptions, what information they include, how they work, and detail about various components of a course description. ' +
-      'Learn about where you can find course descriptions, what information they include, how they work, and detail about various ' +
-      'components of a course description.');
+    expect(fixture.nativeElement.querySelector('.course-details__title').innerText.includes('mock title')).toBeTruthy();
+    expect(fixture.nativeElement.querySelector('.course-details__duration').innerText.includes('1h 26min')).toBeTruthy();
+    expect(fixture.nativeElement.querySelector('.course-details__created').innerText.includes('12 Dec, 2012')).toBeTruthy();
+    expect(fixture.nativeElement.querySelector('.course-details__description').innerText).toBe('mock description');
   });
 
-  it('should delete', () => {
+  it('should emit delete event after click delete button', () => {
     const spy = spyOn(component.delete, 'emit');
     const deleteBtn = fixture.nativeElement.querySelector('.course-actions__delete');
-    component.course = {
-      id: 1,
-      title: 'JavaScript. Basic knowledge',
-      creationDate: '9 Nov, 2018',
-      duration: '1h 20min',
-      description: 'Learn about where you can find course descriptions, what information they include, how they work, ' +
-        'and detail about various components of a course description. Learn about where you can find course descriptions, what ' +
-        'information they include, how they work, and detail about various components of a course description.'
-    };
-    fixture.detectChanges();
 
     deleteBtn.dispatchEvent(new Event('click'));
 

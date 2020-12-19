@@ -13,6 +13,9 @@ import { SearchComponent } from './components/courses-page/search/search.compone
 import { CoursesListComponent } from './components/courses-page/courses-list/courses-list.component';
 import { CourseItemComponent } from './components/courses-page/course-item/course-item.component';
 import { FormsModule } from '@angular/forms';
+import { BorderingDirective } from './directives/bordering.directive';
+import { DurationPipe } from './pipes/duration.pipe';
+import { OrderByPipe } from './pipes/order-by.pipe';
 
 @NgModule({
   declarations: [
@@ -24,7 +27,10 @@ import { FormsModule } from '@angular/forms';
     LogoComponent,
     SearchComponent,
     CoursesListComponent,
-    CourseItemComponent
+    CourseItemComponent,
+    BorderingDirective,
+    DurationPipe,
+    OrderByPipe
   ],
   imports: [
     BrowserModule,

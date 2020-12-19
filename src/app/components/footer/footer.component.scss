@@ -1,13 +1,15 @@
+@import "src/assets/styles/variables";
+
 .footer {
   position: sticky;
   bottom: 0;
   display: flex;
   align-items: center;
   height: 60px;
-  background: #1f293b;
+  background: $color-main-dark-blue;
 
   &-block {
-    color: #989797;
+    color: $color-grey-40;
     font-size: 16px;
     text-align: right;
   }

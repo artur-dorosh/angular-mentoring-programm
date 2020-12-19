@@ -1,3 +1,5 @@
+@import "src/assets/styles/variables";
+
 .course-item {
 
   &-block {
@@ -6,7 +8,7 @@
     justify-content: space-between;
     margin-bottom: 25px;
     padding: 30px 25px;
-    background: #fff;
+    background: $color-white-100;
   }
 }
 
@@ -21,19 +23,28 @@
   }
 
   &__title {
+    display: flex;
+    align-items: center;
     font-size: 24px;
     font-weight: bold;
+
+    &-icon {
+      margin-top: -3px;
+      margin-left: 6px;
+      font-size: 22px;
+      color: $color-gold;
+    }
   }
 
   &__info {
     display: flex;
     align-items: center;
-    color: #cbc9c9;
+    color: $color-grey-20;
   }
 
   &__duration {
     display: flex;
-    align-items: center;
+    align-items: flex-end;
     margin-right: 15px;
     font-size: 12px;
 
@@ -45,7 +56,7 @@
 
   &__created {
     display: flex;
-    align-items: center;
+    align-items: flex-end;
     font-size: 12px;
 
     &-icon {
@@ -57,7 +68,7 @@
   &__description {
     font-size: 14px;
     line-height: 20px;
-    color: #515050;
+    color: $color-grey-70;
     text-align: justify;
   }
 }
@@ -73,8 +84,8 @@
     justify-content: center;
     padding: 8px 15px;
     font-size: 14px;
-    color: #fff;
-    background: #04bbd2;
+    color: $color-white-100;
+    background: $color-main-blue;
     border-radius: 4px;
     cursor: pointer;
 
