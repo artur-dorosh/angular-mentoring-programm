@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {Course} from '../../../models/course';
+import { ICourse } from '../../../interfaces/course.interface';
 
-const courses: Course[] = [
+const courses: ICourse[] = [
   {
     id: 1,
     title: 'JavaScript. Basic knowledge',
@@ -39,7 +39,7 @@ export class CoursesListComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit() {
+  ngOnInit(): void {
   }
 
   loadMore(): void {
