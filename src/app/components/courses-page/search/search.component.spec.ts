@@ -25,13 +25,13 @@ describe('SearchComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should invoke search method after clicking on search button', () => {
-    const spy = spyOn(console, 'log');
-    const search = fixture.nativeElement.querySelector('.search-block__input');
+  it('should emit searchQuery event after click search button', () => {
+    const spy = spyOn(component.searchQuery, 'emit');
+    const searchInput = fixture.nativeElement.querySelector('.search-block__input');
     const searchBtn = fixture.nativeElement.querySelector('.search-button');
 
-    search.value = 'mock search query';
-    search.dispatchEvent(new Event('input'));
+    searchInput.value = 'mock search query';
+    searchInput.dispatchEvent(new Event('input'));
 
     searchBtn.dispatchEvent(new Event('click'));
 

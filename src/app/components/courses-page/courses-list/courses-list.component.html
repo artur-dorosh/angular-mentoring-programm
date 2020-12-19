@@ -6,11 +6,18 @@
         Add course
       </div>
 
-      <ng-container *ngFor="let course of courses">
-        <app-course-item [course]="course" (delete)="deleteItem($event)"></app-course-item>
+      <ng-container *ngIf="courses.length">
+        <app-course-item *ngFor="let course of courses | orderBy: 'desc'"
+                         [course]="course"
+                         (delete)="deleteItem($event)">
+        </app-course-item>
+
+        <div class="load-more" (click)="loadMore()">Load more</div>
       </ng-container>
 
-      <div class="load-more" (click)="loadMore()">Load more</div>
+      <div class="no-data" *ngIf="!courses.length">
+        {{ 'No data. Feel free to add new course' | uppercase }}
+      </div>
     </div>
   </div>
 </div>

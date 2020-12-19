@@ -1,3 +1,6 @@
+@import "src/assets/styles/variables";
+
 .courses {
-  background: #f0f0f6;
+  min-height: calc(100vh - 200px);
+  background: $color-grey-10;
 }

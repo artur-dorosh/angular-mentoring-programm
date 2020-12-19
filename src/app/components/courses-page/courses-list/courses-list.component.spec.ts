@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { CoursesListComponent } from './courses-list.component';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { OrderByPipe } from '../../../pipes/order-by.pipe';
 
 describe('CoursesListComponent', () => {
   let component: CoursesListComponent;
@@ -8,7 +9,10 @@ describe('CoursesListComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ CoursesListComponent ],
+      declarations: [
+        CoursesListComponent,
+        OrderByPipe
+      ],
       schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
     })
     .compileComponents();
@@ -17,6 +21,24 @@ describe('CoursesListComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(CoursesListComponent);
     component = fixture.componentInstance;
+    component.courses = [
+      {
+        id: 1,
+        title: 'mock title',
+        creationDate: '2012-12-12',
+        duration: 86,
+        description: 'mock description',
+        topRated: true,
+      },
+      {
+        id: 2,
+        title: 'mock title2',
+        creationDate: '2012-12-12',
+        duration: 86,
+        description: 'mock description2',
+        topRated: true,
+      }
+    ];
     fixture.detectChanges();
   });
 
@@ -25,10 +47,10 @@ describe('CoursesListComponent', () => {
   });
 
   it('should have right mock data', () => {
-    expect(component.courses.length).toBe(3);
+    expect(component.courses.length).toBe(2);
   });
 
-  it('should', () => {
+  it('should invoke loadMore function after load button clicked', () => {
     const loadBtn = fixture.nativeElement.querySelector('.load-more');
     const spy = spyOn(console, 'log');
 
@@ -37,7 +59,7 @@ describe('CoursesListComponent', () => {
     expect(spy).toHaveBeenCalledWith('Loading more courses...');
   });
 
-  it('should', () => {
+  it('should invoke deleteItem function after delete button clicked', () => {
     const spy = spyOn(console, 'log');
 
     component.deleteItem(3);

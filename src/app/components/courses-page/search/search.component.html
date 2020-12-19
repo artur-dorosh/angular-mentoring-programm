@@ -1,9 +1,13 @@
 <div class="search">
   <div class="search-block">
     <span class="material-icons search-block__icon">search</span>
-    <input type="text" class="search-block__input" placeholder="Text to search" [(ngModel)]="searchInput">
+    <input type="text"
+           class="search-block__input"
+           placeholder="Text to search"
+           [(ngModel)]="searchInput"
+           (keydown.enter)="search()">
   </div>
-  <div class="search-button" (click)="search(searchInput)">
+  <div class="search-button" (click)="search()">
     Search
   </div>
 </div>
