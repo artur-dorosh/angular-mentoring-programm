@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ICourse } from '../../../models/course.interface';
+import { ICourse } from '../../../interfaces/course.interface';
 
 const courses: ICourse[] = [
   {
@@ -39,7 +39,7 @@ export class CoursesListComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit() {
+  ngOnInit(): void {
   }
 
   loadMore(): void {
