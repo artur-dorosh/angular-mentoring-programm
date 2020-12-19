@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {Course} from '../../../models/course';
+import { ICourse } from '../../../models/course.interface';
 
-const courses: Course[] = [
+const courses: ICourse[] = [
   {
     id: 1,
     title: 'JavaScript. Basic knowledge',

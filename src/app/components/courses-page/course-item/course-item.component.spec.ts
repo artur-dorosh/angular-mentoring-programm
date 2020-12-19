@@ -16,6 +16,13 @@ describe('CourseItemComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(CourseItemComponent);
     component = fixture.componentInstance;
+    component.course = {
+      id: 1,
+      title: '',
+      creationDate: '',
+      duration: '',
+      description: ''
+    };
     fixture.detectChanges();
   });
 
