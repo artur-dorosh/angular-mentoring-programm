@@ -1,0 +1,17 @@
+<div class="header">
+  <div class="container">
+    <div class="header-block">
+      <app-logo></app-logo>
+      <div class="authorization">
+        <div class="login" *ngIf="!authService.isAuthenticated()">
+          <span class="material-icons login__icon">person</span>
+          User login
+        </div>
+        <button class="logout" *ngIf="authService.isAuthenticated()" (click)="logout()">
+          <span class="material-icons logout__icon">exit_to_app</span>
+          Log off
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

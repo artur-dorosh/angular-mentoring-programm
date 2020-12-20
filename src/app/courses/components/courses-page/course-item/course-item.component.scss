@@ -1,0 +1,101 @@
+@import "../../../../../assets/styles/variables";
+
+.course-item {
+
+  &-block {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 25px;
+    padding: 30px 25px;
+    background: $color-white-100;
+  }
+}
+
+.course-details {
+  width: 75%;
+
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 15px;
+  }
+
+  &__title {
+    display: flex;
+    align-items: center;
+    font-size: 24px;
+    font-weight: bold;
+
+    &-icon {
+      margin-top: -2px;
+      margin-left: 6px;
+      font-size: 22px;
+      color: $color-gold;
+    }
+  }
+
+  &__info {
+    display: flex;
+    align-items: center;
+    color: $color-grey-20;
+  }
+
+  &__duration {
+    display: flex;
+    align-items: flex-end;
+    margin-right: 15px;
+    font-size: 12px;
+
+    &-icon {
+      margin-right: 5px;
+      font-size: 18px;
+    }
+  }
+
+  &__created {
+    display: flex;
+    align-items: flex-end;
+    font-size: 12px;
+
+    &-icon {
+      margin-right: 5px;
+      font-size: 18px;
+    }
+  }
+
+  &__description {
+    font-size: 14px;
+    line-height: 20px;
+    color: $color-grey-70;
+    text-align: justify;
+  }
+}
+
+.course-actions {
+  display: flex;
+  align-items: center;
+
+  &__edit,
+  &__delete {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px 15px;
+    font-size: 14px;
+    color: $color-white-100;
+    background: $color-main-blue;
+    border-radius: 4px;
+    cursor: pointer;
+
+    &-icon {
+      margin-right: 7px;
+      font-size: 20px;
+    }
+  }
+
+  &__edit {
+    margin-right: 10px;
+  }
+}

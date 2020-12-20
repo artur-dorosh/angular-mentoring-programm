@@ -1,0 +1,23 @@
+<div class="courses-list">
+  <div class="container">
+    <div class="courses-list-block">
+      <div class="add-course-button">
+        <span class="material-icons add-course-button__icon">add</span>
+        Add course
+      </div>
+
+      <ng-container *ngIf="courses.length">
+        <app-course-item *ngFor="let course of courses | orderBy: 'desc'"
+                         [course]="course"
+                         (delete)="onDelete($event)">
+        </app-course-item>
+
+        <div class="load-more" (click)="loadMore()">Load more</div>
+      </ng-container>
+
+      <div class="no-data" *ngIf="!courses.length">
+        {{ 'No data. Feel free to add new course' | uppercase }}
+      </div>
+    </div>
+  </div>
+</div>
