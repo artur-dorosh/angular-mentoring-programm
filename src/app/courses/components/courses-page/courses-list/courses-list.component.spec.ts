@@ -60,10 +60,10 @@ describe('CoursesListComponent', () => {
   });
 
   it('should invoke deleteItem function after delete button clicked', () => {
-    const spy = spyOn(console, 'log');
+    const spy = spyOn(component.delete, 'emit');
 
-    component.deleteItem(3);
+    component.onDelete(3);
 
-    expect(spy).toHaveBeenCalledWith('You want to delete course with id=3');
+    expect(spy).toHaveBeenCalledWith(3);
   });
 });

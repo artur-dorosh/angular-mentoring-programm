@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { ICourse } from '../interfaces/course.interface';
 
-let courses: ICourse[] = [
+const courses: ICourse[] = [
   {
     id: 1,
     title: 'JavaScript. Basic knowledge',
@@ -45,7 +45,10 @@ export class CoursesService {
   }
 
   createCourse(course: ICourse): ICourse[] {
-    this.courses.push(course);
+    const isSameCourse = this.courses.find(item => item.id === course.id);
+    if (!isSameCourse) {
+      this.courses.push(course);
+    }
     return this.courses;
   }
 
