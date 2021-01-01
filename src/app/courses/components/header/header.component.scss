@@ -1,0 +1,54 @@
+@import "../../../../assets/styles/variables";
+
+.header {
+  display: flex;
+  align-items: center;
+  height: 70px;
+  background: $color-main-dark-blue;
+
+  &-block {
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+.authorization {
+  display: flex;
+  color: $color-white-100;
+
+  .login {
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+    background: transparent;
+    border: none;
+    outline: none;
+    cursor: pointer;i
+
+    &__icon {
+      display: flex;
+      align-items: center;
+      margin-right: 10px;
+      font-size: 22px;
+    }
+  }
+
+  .logout {
+    display: flex;
+    align-items: center;
+    margin-left: 30px;
+    font-size: 16px;
+    color: $color-white-100;
+    background: transparent;
+    border: none;
+    outline: none;
+    cursor: pointer;
+
+    &__icon {
+      display: flex;
+      align-items: center;
+      margin-right: 10px;
+      font-size: 22px;
+    }
+  }
+}

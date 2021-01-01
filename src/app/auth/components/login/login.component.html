@@ -1,0 +1,33 @@
+<div class="login">
+  <div class="login-form">
+    <div class="login-form__header">Login</div>
+
+    <div class="login-form__content">
+      <div class="login-form__block">
+        <label for="email" class="login-form__block-label">E-mail:</label>
+        <input type="text"
+               id="email"
+               class="login-form__block-input email"
+               placeholder="Enter e-mail"
+               [(ngModel)]="email">
+      </div>
+      <div class="login-form__block">
+        <label for="password" class="login-form__block-label">Password:</label>
+        <input type="text"
+               id="password"
+               class="login-form__block-input password"
+               placeholder="Enter password"
+               [(ngModel)]="password">
+      </div>
+    </div>
+
+    <div class="login-form__footer">
+      <div class="login-form__forgot">Forgot password?</div>
+      <button class="login-form__login-btn"
+              [disabled]="!email || !password"
+              (click)="login()">
+        Login
+      </button>
+    </div>
+  </div>
+</div>

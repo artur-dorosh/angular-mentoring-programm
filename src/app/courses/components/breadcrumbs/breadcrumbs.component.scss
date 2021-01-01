@@ -1,0 +1,12 @@
+@import "../../../../assets/styles/variables";
+
+.breadcrumbs {
+  display: flex;
+  align-items: center;
+  height: 70px;
+
+  &-block {
+    font-weight: bold;
+    color: $color-grey-80;
+  }
+}

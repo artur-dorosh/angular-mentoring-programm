@@ -1,0 +1,88 @@
+@import "src/assets/styles/variables";
+
+.login {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: calc(100% - 130px);
+  background: $color-grey-10;
+
+  &-form {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    padding: 30px 25px;
+    width: 350px;
+    background: $color-white-100;
+    border-radius: 4px;
+    box-shadow: 1px 1px 20px rgba($color-black-100, 0.2);
+
+    &__header {
+      margin-bottom: 25px;
+      font-size: 20px;
+      line-height: 24px;
+      font-weight: bold;
+      letter-spacing: 0.8px;
+    }
+
+    &__content {
+      margin-bottom: 10px;
+      width: 100%;
+    }
+
+    &__block {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      margin-bottom: 15px;
+
+      &-label {
+        margin-bottom: 10px;
+        font-size: 14px;
+        line-height: 18px;
+        font-weight: bold;
+      }
+
+      &-input {
+        padding: 8px;
+        outline: none;
+      }
+    }
+
+    &__footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+    }
+
+    &__forgot {
+      margin-left: 15px;
+      font-size: 13px;
+      line-height: 16px;
+      text-decoration: underline;
+      color: $color-link;
+      cursor: pointer;
+    }
+
+    &__login-btn {
+      padding: 12px 15px;
+      font-size: 14px;
+      line-height: 16px;
+      font-weight: bold;
+      letter-spacing: 0.8px;
+      color: $color-white-100;
+      background: $color-main-blue;
+      border-radius: 4px;
+      border: none;
+      outline: none;
+      cursor: pointer;
+
+      &:disabled {
+        color: $color-grey-40;
+        background: rgba($color-grey-20, 0.5);
+        cursor: not-allowed;
+      }
+    }
+  }
+}
