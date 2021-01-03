@@ -9,7 +9,9 @@ import { ICourse } from '../../../interfaces/course.interface';
 export class CoursesListComponent implements OnInit {
   @Input() courses: ICourse[];
 
-  @Output() delete: EventEmitter<number> = new EventEmitter<number>();
+  @Output() delete: EventEmitter<string> = new EventEmitter<string>();
+  @Output() edit: EventEmitter<string> = new EventEmitter<string>();
+  @Output() addCourse: EventEmitter<boolean> = new EventEmitter<boolean>();
 
   constructor() { }
 
@@ -20,8 +22,16 @@ export class CoursesListComponent implements OnInit {
     console.log('Loading more courses...');
   }
 
-  onDelete(id: number): void {
+  onDelete(id: string): void {
     this.delete.emit(id);
+  }
+
+  onEdit(id: string): void {
+    this.edit.emit(id);
+  }
+
+  onAddCourse(): void {
+    this.addCourse.emit(true);
   }
 
 }

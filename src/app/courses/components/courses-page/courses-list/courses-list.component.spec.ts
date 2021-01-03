@@ -23,7 +23,7 @@ describe('CoursesListComponent', () => {
     component = fixture.componentInstance;
     component.courses = [
       {
-        id: 1,
+        id: '1',
         title: 'mock title',
         creationDate: '2012-12-12',
         duration: 86,
@@ -31,7 +31,7 @@ describe('CoursesListComponent', () => {
         topRated: true,
       },
       {
-        id: 2,
+        id: '2',
         title: 'mock title2',
         creationDate: '2012-12-12',
         duration: 86,
@@ -62,8 +62,24 @@ describe('CoursesListComponent', () => {
   it('should invoke deleteItem function after delete button clicked', () => {
     const spy = spyOn(component.delete, 'emit');
 
-    component.onDelete(3);
+    component.onDelete('3');
 
-    expect(spy).toHaveBeenCalledWith(3);
+    expect(spy).toHaveBeenCalledWith('3');
+  });
+
+  it('should invoke editItem function after edit button clicked', () => {
+    const spy = spyOn(component.edit, 'emit');
+
+    component.onEdit('3');
+
+    expect(spy).toHaveBeenCalledWith('3');
+  });
+
+  it('should invoke add course function after add course button clicked', () => {
+    const spy = spyOn(component.addCourse, 'emit');
+
+    component.onAddCourse();
+
+    expect(spy).toHaveBeenCalledWith(true);
   });
 });

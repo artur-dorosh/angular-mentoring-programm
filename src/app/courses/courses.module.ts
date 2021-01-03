@@ -12,9 +12,10 @@ import { BorderingDirective } from './directives/bordering.directive';
 import { DurationPipe } from './pipes/duration.pipe';
 import { OrderByPipe } from './pipes/order-by.pipe';
 import { ConfirmationDialogComponent } from './components/confirmation-dialog/confirmation-dialog.component';
-import { MatDialogModule } from '@angular/material';
+import { MatButtonModule, MatDialogModule } from '@angular/material';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
+import { AddCourseComponent } from './components/add-course/add-course.component';
 
 
 
@@ -32,12 +33,14 @@ import { RouterModule } from '@angular/router';
     DurationPipe,
     OrderByPipe,
     ConfirmationDialogComponent,
+    AddCourseComponent,
   ],
   imports: [
     CommonModule,
     MatDialogModule,
     FormsModule,
     RouterModule,
+    MatButtonModule,
   ],
   exports: [
     HeaderComponent,

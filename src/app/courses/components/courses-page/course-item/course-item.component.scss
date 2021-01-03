@@ -1,5 +1,9 @@
 @import "../../../../../assets/styles/variables";
 
+:host {
+  width: 100%;
+}
+
 .course-item {
 
   &-block {
