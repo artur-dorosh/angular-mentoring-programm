@@ -14,6 +14,7 @@
   <div class="course__block course__duration">
     <label for="duration" class="course__duration-header">Duration</label>
     <input type="number" id="duration" class="course__duration-input" [(ngModel)]="duration">
+    <span class="course__duration-value">{{ duration | duration }}</span>
   </div>
   <div class="course__block course__authors">
     <div class="course__authors-header">Authors</div>

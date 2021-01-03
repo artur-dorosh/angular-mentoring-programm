@@ -40,10 +40,15 @@
   &__duration {
 
     &-input {
+      margin-right: 15px;
       padding-left: 10px;
       width: 220px;
       height: 30px;
       outline: none;
+    }
+
+    &-value {
+      font-size: 14px;
     }
   }
 

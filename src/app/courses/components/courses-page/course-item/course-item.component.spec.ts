@@ -23,7 +23,7 @@ describe('CourseItemComponent', () => {
     fixture = TestBed.createComponent(CourseItemComponent);
     component = fixture.componentInstance;
     component.course = {
-      id: 1,
+      id: '1',
       title: 'mock title',
       creationDate: '2012-12-12',
       duration: 86,
@@ -50,6 +50,15 @@ describe('CourseItemComponent', () => {
 
     deleteBtn.dispatchEvent(new Event('click'));
 
-    expect(spy).toHaveBeenCalledWith(1);
+    expect(spy).toHaveBeenCalledWith('1');
+  });
+
+  it('should emit delete event after click edit button', () => {
+    const spy = spyOn(component.edit, 'emit');
+    const editBtn = fixture.nativeElement.querySelector('.course-actions__edit');
+
+    editBtn.dispatchEvent(new Event('click'));
+
+    expect(spy).toHaveBeenCalledWith('1');
   });
 });

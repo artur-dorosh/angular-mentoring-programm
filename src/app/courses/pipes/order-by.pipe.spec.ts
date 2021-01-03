@@ -3,7 +3,7 @@ import { ICourse } from '../interfaces/course.interface';
 
 const mockCourses: ICourse[] = [
   {
-    id: 1,
+    id: '1',
     title: 'mock title',
     creationDate: '2012-12-12',
     duration: 86,
@@ -11,7 +11,7 @@ const mockCourses: ICourse[] = [
     topRated: true,
   },
   {
-    id: 3,
+    id: '3',
     title: 'mock title3',
     creationDate: '2014-12-12',
     duration: 86,
@@ -19,7 +19,7 @@ const mockCourses: ICourse[] = [
     topRated: true,
   },
   {
-    id: 2,
+    id: '2',
     title: 'mock title2',
     creationDate: '2013-12-12',
     duration: 86,
@@ -27,7 +27,7 @@ const mockCourses: ICourse[] = [
     topRated: true,
   },
   {
-    id: 4,
+    id: '4',
     title: 'mock title4',
     creationDate: '2013-12-12',
     duration: 86,
@@ -52,10 +52,10 @@ describe('OrderByPipe', () => {
 
     const expectation = pipe.transform(courses, 'asc');
 
-    expect(expectation[0].id).toBe(1);
-    expect(expectation[1].id).toBe(2);
-    expect(expectation[2].id).toBe(4);
-    expect(expectation[3].id).toBe(3);
+    expect(expectation[0].id).toBe('1');
+    expect(expectation[1].id).toBe('2');
+    expect(expectation[2].id).toBe('4');
+    expect(expectation[3].id).toBe('3');
   });
 
   it('should order items by creation date from later to earlier', () => {
@@ -63,9 +63,9 @@ describe('OrderByPipe', () => {
 
     const expectation = pipe.transform(courses, 'desc');
 
-    expect(expectation[0].id).toBe(3);
-    expect(expectation[1].id).toBe(2);
-    expect(expectation[2].id).toBe(4);
-    expect(expectation[3].id).toBe(1);
+    expect(expectation[0].id).toBe('3');
+    expect(expectation[1].id).toBe('2');
+    expect(expectation[2].id).toBe('4');
+    expect(expectation[3].id).toBe('1');
   });
 });
