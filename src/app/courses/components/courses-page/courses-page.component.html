@@ -1,9 +1,19 @@
 <div class="courses">
   <div class="container">
     <div class="courses-block">
-      <app-search (searchQuery)="search($event)"></app-search>
+      <app-search *ngIf="!currentlyChangeCourse" (searchQuery)="search($event)"></app-search>
 
-      <app-courses-list [courses]="courses" (delete)="deleteCourse($event)"></app-courses-list>
+      <app-courses-list *ngIf="!currentlyChangeCourse"
+                        [courses]="courses"
+                        (delete)="deleteCourse($event)"
+                        (edit)="editCourse($event)"
+                        (addCourse)="currentlyChangeCourse = $event">
+      </app-courses-list>
+
+      <app-add-course *ngIf="currentlyChangeCourse"
+                      [courseId]="currentCourseId"
+                      (changeCourse)="updateCoursesList($event)">
+      </app-add-course>
     </div>
   </div>
 </div>

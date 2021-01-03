@@ -1,0 +1,25 @@
+<div class="course">
+  <div class="course__block course__title">
+    <label for="title" class="course__title-header">Title</label>
+    <input type="text" id="title" class="course__title-input" [(ngModel)]="title">
+  </div>
+  <div class="course__block course__description">
+    <label for="description" class="course__description-header">Description</label>
+    <textarea id="description" class="course__description-input" [(ngModel)]="description"></textarea>
+  </div>
+  <div class="course__block course__date">
+    <label for="date" class="course__date-header">Date</label>
+    <input type="date" id="date" class="course__date-input" [(ngModel)]="date">
+  </div>
+  <div class="course__block course__duration">
+    <label for="duration" class="course__duration-header">Duration</label>
+    <input type="number" id="duration" class="course__duration-input" [(ngModel)]="duration">
+  </div>
+  <div class="course__block course__authors">
+    <div class="course__authors-header">Authors</div>
+  </div>
+  <div class="course__actions">
+    <button mat-button class="course__save" (click)="addCourse()">Save</button>
+    <button mat-button class="course__cancel" (click)="onChange(false)">Cancel</button>
+  </div>
+</div>

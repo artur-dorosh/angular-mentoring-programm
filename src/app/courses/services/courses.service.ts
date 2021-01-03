@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
 import { ICourse } from '../interfaces/course.interface';
+import { v4 as uuid } from 'uuid';
 
 const courses: ICourse[] = [
   {
-    id: 1,
+    id: uuid(),
     title: 'JavaScript. Basic knowledge',
     creationDate: '2020-12-09',
     duration: 80,
@@ -12,7 +13,7 @@ const courses: ICourse[] = [
       'they include, how they work, and detail about various components of a course description.',
     topRated: false,
   }, {
-    id: 2,
+    id: uuid(),
     title: 'Angular 2+. Advanced course',
     creationDate: '2020-12-01',
     duration: 69,
@@ -21,7 +22,7 @@ const courses: ICourse[] = [
       'they include, how they work, and detail about various components of a course description.',
     topRated: true,
   }, {
-    id: 3,
+    id: uuid(),
     title: 'TypeScript. From junior to lead',
     creationDate: '2020-12-27',
     duration: 97,
@@ -52,7 +53,7 @@ export class CoursesService {
     return this.courses;
   }
 
-  getCourse(id: number): ICourse {
+  getCourse(id: string): ICourse {
     return this.courses.find(course => course.id === id);
   }
 
@@ -61,7 +62,7 @@ export class CoursesService {
     return this.courses;
   }
 
-  removeCourse(id: number): ICourse[] {
+  removeCourse(id: string): ICourse[] {
     this.courses = this.courses.filter(course => course.id !== id);
     return this.courses;
   }

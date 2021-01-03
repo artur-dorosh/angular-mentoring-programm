@@ -1,0 +1,79 @@
+@import "src/assets/styles/variables";
+
+.course {
+  padding: 20px 0;
+
+  &__block {
+    margin-bottom: 10px;
+  }
+
+  &__title {
+
+    &-input {
+      padding-left: 10px;
+      width: calc(100% - 10px);
+      height: 30px;
+      outline: none;
+    }
+  }
+
+  &__description {
+
+    &-input {
+      padding: 10px 0 10px 10px;
+      width: calc(100% - 10px);
+      height: 100px;
+      outline: none;
+    }
+  }
+
+  &__date {
+
+    &-input {
+      padding-left: 10px;
+      width: 220px;
+      height: 30px;
+      outline: none;
+    }
+  }
+
+  &__duration {
+
+    &-input {
+      padding-left: 10px;
+      width: 220px;
+      height: 30px;
+      outline: none;
+    }
+  }
+
+  &__actions {
+    display: flex;
+    align-items: center;
+    margin-top: 30px;
+  }
+
+  &__save {
+    margin-right: 15px;
+    color: $color-white-100;
+    background: $color-main-green;
+  }
+
+  &__cancel {
+    color: $color-white-100;
+    background: $color-main-blue;
+  }
+}
+
+.course__title-header,
+.course__description-header,
+.course__date-header,
+.course__duration-header,
+.course__authors-header {
+  display: block;
+  margin-bottom: 5px;
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: bold;
+  letter-spacing: 0.8px;
+}

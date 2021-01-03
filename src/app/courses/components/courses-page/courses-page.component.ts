@@ -11,7 +11,10 @@ import { filter, take } from 'rxjs/operators';
   styleUrls: ['./courses-page.component.scss']
 })
 export class CoursesPageComponent implements OnInit {
-  public courses: ICourse[] = this.coursesService.getCoursesList();
+  public courses: ICourse[];
+  public currentlyChangeCourse = false;
+
+  public currentCourseId: string;
 
   constructor(
     private coursesService: CoursesService,
@@ -19,6 +22,7 @@ export class CoursesPageComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.courses = this.coursesService.getCoursesList();
   }
 
   search(value: string): void {
@@ -27,7 +31,7 @@ export class CoursesPageComponent implements OnInit {
       this.coursesService.getCoursesList();
   }
 
-  deleteCourse(id: number): void {
+  deleteCourse(id: string): void {
     this.dialog.open(ConfirmationDialogComponent, {
       width: '400px',
       panelClass: 'confirmation-popup',
@@ -40,4 +44,15 @@ export class CoursesPageComponent implements OnInit {
     ).subscribe(() => this.courses = this.coursesService.removeCourse(id));
   }
 
+  editCourse(id: string): void {
+    this.currentlyChangeCourse = true;
+    this.currentCourseId = id;
+  }
+
+  updateCoursesList(value: boolean): void {
+    if (value) {
+      this.courses = this.coursesService.getCoursesList();
+    }
+    this.currentlyChangeCourse = false;
+  }
 }
