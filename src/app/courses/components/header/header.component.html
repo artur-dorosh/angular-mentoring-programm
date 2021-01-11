@@ -3,11 +3,11 @@
     <div class="header-block">
       <app-logo></app-logo>
       <div class="authorization">
-        <div class="login" *ngIf="!authService.isAuthenticated()">
+        <div class="login" *ngIf="!authService.isAuthenticated()" routerLink="/login">
           <span class="material-icons login__icon">person</span>
           User login
         </div>
-        <button class="logout" *ngIf="authService.isAuthenticated()" (click)="logout()">
+        <button class="logout" *ngIf="authService.isAuthenticated()" (click)="logout()" routerLink="/login">
           <span class="material-icons logout__icon">exit_to_app</span>
           Log off
         </button>
