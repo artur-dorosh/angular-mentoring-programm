@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 import { ICourse } from '../interfaces/course.interface';
-import { v4 as uuid } from 'uuid';
+import { BehaviorSubject } from 'rxjs';
 
 const courses: ICourse[] = [
   {
-    id: uuid(),
+    id: 'eb8c25d1-9361-4199-9561-3a2f826888d5',
     title: 'JavaScript. Basic knowledge',
     creationDate: '2020-12-09',
     duration: 80,
@@ -13,7 +13,7 @@ const courses: ICourse[] = [
       'they include, how they work, and detail about various components of a course description.',
     topRated: false,
   }, {
-    id: uuid(),
+    id: '18dee72d-6a83-4aa7-b7d4-27f7815d864b',
     title: 'Angular 2+. Advanced course',
     creationDate: '2020-12-01',
     duration: 69,
@@ -22,7 +22,7 @@ const courses: ICourse[] = [
       'they include, how they work, and detail about various components of a course description.',
     topRated: true,
   }, {
-    id: uuid(),
+    id: 'c45546c7-d6cc-4b02-bf75-44144bc8772b',
     title: 'TypeScript. From junior to lead',
     creationDate: '2020-12-27',
     duration: 97,
@@ -37,6 +37,8 @@ const courses: ICourse[] = [
   providedIn: 'root'
 })
 export class CoursesService {
+  currentCourseId: BehaviorSubject<string> = new BehaviorSubject<string>('');
+
   private courses = courses;
 
   constructor() { }
@@ -46,10 +48,7 @@ export class CoursesService {
   }
 
   createCourse(course: ICourse): ICourse[] {
-    const isSameCourse = this.courses.find(item => item.id === course.id);
-    if (!isSameCourse) {
-      this.courses.push(course);
-    }
+    this.courses.push(course);
     return this.courses;
   }
 

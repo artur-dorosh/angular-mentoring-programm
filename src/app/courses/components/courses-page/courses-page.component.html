@@ -3,17 +3,18 @@
     <div class="courses-block">
       <app-search *ngIf="!currentlyChangeCourse" (searchQuery)="search($event)"></app-search>
 
-      <app-courses-list *ngIf="!currentlyChangeCourse"
-                        [courses]="courses"
+      <div class="courses__add-block">
+        <div class="add-course-button" routerLink="./new">
+          <span class="material-icons add-course-button__icon">add</span>
+          Add course
+        </div>
+      </div>
+
+      <app-courses-list [courses]="courses"
                         (delete)="deleteCourse($event)"
-                        (edit)="editCourse($event)"
-                        (addCourse)="currentlyChangeCourse = $event">
+                        (edit)="editCourse($event)">
       </app-courses-list>
 
-      <app-add-course *ngIf="currentlyChangeCourse"
-                      [courseId]="currentCourseId"
-                      (changeCourse)="updateCoursesList($event)">
-      </app-add-course>
     </div>
   </div>
 </div>

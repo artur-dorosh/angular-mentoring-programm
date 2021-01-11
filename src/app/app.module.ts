@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { CoursesModule } from './courses/courses.module';
 import { AuthModule } from './auth/auth.module';
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { AuthModule } from './auth/auth.module';
     NoopAnimationsModule,
     CoursesModule,
     AuthModule,
+    SharedModule
   ],
   providers: [],
   bootstrap: [AppComponent],

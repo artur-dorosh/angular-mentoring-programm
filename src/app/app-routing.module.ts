@@ -1,19 +1,19 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { CoursesPageComponent } from './courses/components/courses-page/courses-page.component';
-import { LoginComponent } from './auth/components/login/login.component';
-
 
 const routes: Routes = [
   {
-    path: '',
-    component: CoursesPageComponent,
+    path: 'courses',
+    loadChildren: () => import('./courses/courses.module').then((module) => module.CoursesModule)
   }, {
     path: 'login',
-    component: LoginComponent,
+    loadChildren: () => import('./auth/auth.module').then((module) => module.AuthModule)
+  }, {
+    path: 'error/404',
+    loadChildren: () => import('./shared/shared.module').then((module) => module.SharedModule)
   }, {
     path: '**',
-    redirectTo: ''
+    redirectTo: '/error/404'
   }
 ];
 
