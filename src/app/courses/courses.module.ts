@@ -14,10 +14,25 @@ import { OrderByPipe } from './pipes/order-by.pipe';
 import { ConfirmationDialogComponent } from './components/confirmation-dialog/confirmation-dialog.component';
 import { MatButtonModule, MatDialogModule } from '@angular/material';
 import { FormsModule } from '@angular/forms';
-import { RouterModule } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 import { AddCourseComponent } from './components/add-course/add-course.component';
+import { AuthGuard } from '../auth/guards/auth.guard';
 
-
+export const routes: Routes = [
+  {
+    path: '',
+    component: CoursesPageComponent,
+    canActivate: [ AuthGuard ],
+  }, {
+    path: 'new',
+    component: AddCourseComponent,
+    canActivate: [ AuthGuard ],
+  }, {
+    path: ':id',
+    component: AddCourseComponent,
+    canActivate: [ AuthGuard ],
+  },
+];
 
 @NgModule({
   declarations: [
@@ -39,7 +54,7 @@ import { AddCourseComponent } from './components/add-course/add-course.component
     CommonModule,
     MatDialogModule,
     FormsModule,
-    RouterModule,
+    RouterModule.forChild(routes),
     MatButtonModule,
   ],
   exports: [

@@ -1,7 +1,12 @@
 <div class="breadcrumbs">
   <div class="container">
     <div class="breadcrumbs-block">
-      Courses
+      <div class="breadcrumbs__item pointer" routerLink="/courses">
+        Courses
+      </div>
+      <div class="breadcrumbs__item" *ngIf="courseTitle">
+        &nbsp;/&nbsp;{{ courseTitle }}
+      </div>
     </div>
   </div>
 </div>

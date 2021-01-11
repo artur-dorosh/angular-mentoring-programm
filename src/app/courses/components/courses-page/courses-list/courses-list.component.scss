@@ -6,28 +6,6 @@
     display: flex;
     flex-direction: column;
     align-items: flex-end;
-
-    .add-course-button {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: 15px;
-      width: 150px;
-      height: 40px;
-      font-size: 14px;
-      line-height: 40px;
-      color: $color-white-100;
-      background: $color-main-blue;
-      border-radius: 4px;
-      cursor: pointer;
-
-      &__icon {
-        display: flex;
-        align-items: flex-start;
-        margin-right: 10px;
-        font-size: 24px;
-      }
-    }
   }
 }
 

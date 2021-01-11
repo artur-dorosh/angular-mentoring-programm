@@ -6,7 +6,18 @@
   height: 70px;
 
   &-block {
+    display: flex;
+    align-items: center;
+  }
+
+  &__item {
     font-weight: bold;
     color: $color-grey-80;
+    border: none;
+    outline: none;
+  }
+
+  .pointer {
+    cursor: pointer;
   }
 }
