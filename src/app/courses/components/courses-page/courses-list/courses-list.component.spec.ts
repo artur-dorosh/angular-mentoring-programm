@@ -75,11 +75,11 @@ describe('CoursesListComponent', () => {
     expect(spy).toHaveBeenCalledWith('3');
   });
 
-  it('should invoke add course function after add course button clicked', () => {
-    const spy = spyOn(component.addCourse, 'emit');
-
-    component.onAddCourse();
-
-    expect(spy).toHaveBeenCalledWith(true);
-  });
+  // it('should invoke add course function after add course button clicked', () => {
+  //   const spy = spyOn(component.addCourse, 'emit');
+  //
+  //   component.onAddCourse();
+  //
+  //   expect(spy).toHaveBeenCalledWith(true);
+  // });
 });

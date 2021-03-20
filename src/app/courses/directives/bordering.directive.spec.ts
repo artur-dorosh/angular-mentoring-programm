@@ -6,8 +6,8 @@ import { Component } from '@angular/core';
   template: `<div [appBordering]="course"></div>`
 })
 class TestBorderingComponent {
-  public course = {
-    id: 1,
+  course = {
+    id: '1',
     title: 'mock title',
     creationDate: '2012-12-12',
     duration: 86,

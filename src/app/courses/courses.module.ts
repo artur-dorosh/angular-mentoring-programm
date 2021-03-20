@@ -23,6 +23,7 @@ export const routes: Routes = [
     path: '',
     component: CoursesPageComponent,
     canActivate: [ AuthGuard ],
+    pathMatch: 'full',
   }, {
     path: 'new',
     component: AddCourseComponent,

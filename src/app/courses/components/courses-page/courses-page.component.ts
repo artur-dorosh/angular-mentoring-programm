@@ -11,10 +11,10 @@ import { filter, take } from 'rxjs/operators';
   styleUrls: ['./courses-page.component.scss']
 })
 export class CoursesPageComponent implements OnInit {
-  public courses: ICourse[];
-  public currentlyChangeCourse = false;
+  courses: ICourse[];
+  currentlyChangeCourse = false;
 
-  public currentCourseId: string;
+  currentCourseId: string;
 
   constructor(
     private coursesService: CoursesService,

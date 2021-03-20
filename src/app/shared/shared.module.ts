@@ -6,7 +6,8 @@ import { ErrorComponent } from './components/error/error.component';
 export const routes: Routes = [
   {
     path: '',
-    component: ErrorComponent
+    component: ErrorComponent,
+    pathMatch: 'full',
   }
 ];
 
