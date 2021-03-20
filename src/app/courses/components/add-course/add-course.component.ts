@@ -15,6 +15,14 @@ export class AddCourseComponent implements OnInit, OnDestroy {
   date: string;
   duration: number;
 
+  get getCourseId(): string {
+    return this.courseId;
+  }
+
+  set setCourseId(id: string) {
+    this.courseId = id;
+  }
+
   private currentCourse: ICourse;
   private courseId: string;
 
@@ -28,13 +36,17 @@ export class AddCourseComponent implements OnInit, OnDestroy {
 
     if (this.courseId) {
       this.courseService.currentCourseId.next(this.courseId);
-
       this.currentCourse = this.courseService.getCourse(this.courseId);
-      this.title = this.currentCourse.title;
-      this.description = this.currentCourse.description;
-      this.date = this.currentCourse.creationDate;
-      this.duration = this.currentCourse.duration;
+      console.log(this.currentCourse);
+      this.initCourse(this.currentCourse);
     }
+  }
+
+  initCourse(course: ICourse): void {
+    this.title = course.title;
+    this.description = course.description;
+    this.date = course.creationDate;
+    this.duration = course.duration;
   }
 
   addCourse(): void {

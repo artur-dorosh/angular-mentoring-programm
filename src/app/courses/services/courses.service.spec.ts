@@ -26,7 +26,7 @@ describe('CoursesService', () => {
   it('should add new course', () => {
     service.createCourse(course);
 
-    expect(service.getCoursesList().length).toBe(4);
+    expect(service.getCoursesList().find(item => item.id === '4')).toBeTruthy();
   });
 
   it('should find course by id', () => {
@@ -38,7 +38,7 @@ describe('CoursesService', () => {
   it('should update course by id', () => {
     service.createCourse(course);
 
-    expect(service.updateCourse({...course, title: 'TS'}).length).toBe(4);
+    expect(service.updateCourse({...course, title: 'TS'}).find(item => item.id === '4').title).toBe(service.getCourse('4').title);
     expect(service.getCourse('4').title).toBe('TS');
   });
 });

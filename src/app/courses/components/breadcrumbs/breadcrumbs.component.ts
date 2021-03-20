@@ -13,9 +13,7 @@ export class BreadcrumbsComponent implements OnInit, OnDestroy {
 
   private onDestroy$: Subject<void> = new Subject<void>();
 
-  constructor(
-    public courseService: CoursesService
-  ) { }
+  constructor(public courseService: CoursesService) { }
 
   ngOnInit(): void {
     this.courseService.currentCourseId.pipe(

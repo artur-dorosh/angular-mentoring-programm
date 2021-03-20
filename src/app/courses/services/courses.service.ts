@@ -37,7 +37,7 @@ const courses: ICourse[] = [
   providedIn: 'root'
 })
 export class CoursesService {
-  currentCourseId: BehaviorSubject<string> = new BehaviorSubject<string>('');
+  currentCourseId: BehaviorSubject<string> = new BehaviorSubject<string>(null);
 
   private courses = courses;
 
