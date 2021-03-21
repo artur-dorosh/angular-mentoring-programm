@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { IUserInfo } from '../interfaces/user-info.interface';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { filter, map, tap } from 'rxjs/operators';
 
 @Injectable({
@@ -12,7 +12,9 @@ export class AuthService {
     return this.token;
   }
 
-  private token = 'test';
+  currentUser$: BehaviorSubject<IUserInfo> = new BehaviorSubject<IUserInfo>(null);
+
+  private token = 't';
 
   constructor(private http: HttpClient) { }
 
@@ -20,7 +22,10 @@ export class AuthService {
     return this.getUserInfo(userInfo).pipe(
       filter((users: IUserInfo[]) => !!users.length),
       map((users: IUserInfo[]) => users[0]),
-      tap((user: IUserInfo) => this.token = user.token)
+      tap((user: IUserInfo) => {
+        this.token = user.token;
+        this.currentUser$.next(user);
+      })
     );
   }
 
