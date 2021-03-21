@@ -4,9 +4,9 @@ import { Routes, RouterModule } from '@angular/router';
 const routes: Routes = [
   {
     path: '',
-    loadChildren: () => import('./courses/courses.module').then((module) => module.CoursesModule)
+    loadChildren: () => import('./courses/courses.module').then((module) => module.CoursesModule),
   }, {
-    path: 'login',
+    path: 'authorization',
     loadChildren: () => import('./auth/auth.module').then((module) => module.AuthModule)
   }, {
     path: 'error/404',

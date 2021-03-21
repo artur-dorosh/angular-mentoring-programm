@@ -4,8 +4,8 @@
       <div class="breadcrumbs__item pointer" routerLink="/courses">
         Courses
       </div>
-      <div class="breadcrumbs__item" *ngIf="courseTitle">
-        &nbsp;/&nbsp;{{ courseTitle }}
+      <div class="breadcrumbs__item" *ngIf="courseTitle$ | async">
+        &nbsp;/&nbsp;{{ courseTitle$ | async }}
       </div>
     </div>
   </div>

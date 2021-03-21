@@ -1,7 +1,7 @@
-<div class="courses">
+<div class="courses" *ngIf="(courses$ | async) as courses">
   <div class="container">
     <div class="courses-block">
-      <app-search *ngIf="!currentlyChangeCourse" (searchQuery)="search($event)"></app-search>
+      <app-search (searchQuery)="search($event)"></app-search>
 
       <div class="courses__add-block">
         <div class="add-course-button" routerLink="./new">
@@ -10,13 +10,14 @@
         </div>
       </div>
 
-      <app-courses-list [courses]="courses$ | async"
+      <app-courses-list [courses]="courses"
                         (delete)="deleteCourse($event)"
                         (edit)="editCourse($event)"
                         (loadMore)="loadMore()">
       </app-courses-list>
 
-      <app-loading-page *ngIf="!(courses$ | async)"></app-loading-page>
     </div>
   </div>
 </div>
+<app-loading-page *ngIf="isLoading$ | async"></app-loading-page>
+

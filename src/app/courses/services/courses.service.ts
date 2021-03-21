@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { ICourse } from '../interfaces/course.interface';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { ITEMS_PER_PAGE } from '../constants/pagination-settings';
 
@@ -8,31 +8,25 @@ import { ITEMS_PER_PAGE } from '../constants/pagination-settings';
   providedIn: 'root'
 })
 export class CoursesService {
-  currentCourseId: BehaviorSubject<string> = new BehaviorSubject<string>(null);
-
   constructor(private http: HttpClient) { }
 
-  getCoursesList(coursesCount: number = ITEMS_PER_PAGE): Observable<ICourse[]> {
-    return this.http.get<ICourse[]>(`http://localhost:3000/courses?_limit=${coursesCount}`);
-  }
-
-  getFilteredCourses(query: string, coursesCount: number = ITEMS_PER_PAGE): Observable<ICourse[]> {
-    return this.http.get<ICourse[]>(`http://localhost:3000/courses?title_like=${query}`);
+  getCoursesList(query: string = '', coursesCount: number = ITEMS_PER_PAGE): Observable<ICourse[]> {
+    return this.http.get<ICourse[]>(`courses?title_like=${query}&_limit=${coursesCount}`);
   }
 
   createCourse(course: ICourse): Observable<ICourse[]> {
-    return this.http.post<ICourse[]>(`http://localhost:3000/courses`, course);
+    return this.http.post<ICourse[]>(`courses`, course);
   }
 
   getCourse(id: string): Observable<ICourse> {
-    return this.http.get<ICourse>(`http://localhost:3000/courses/${id}`);
+    return this.http.get<ICourse>(`courses/${id}`);
   }
 
   updateCourse(course: ICourse): Observable<ICourse[]> {
-    return this.http.put<ICourse[]>(`http://localhost:3000/courses/${course.id}`, course);
+    return this.http.put<ICourse[]>(`courses/${course.id}`, course);
   }
 
-  removeCourse(id: string): Observable<ICourse[]> {
-    return this.http.delete<ICourse[]>(`http://localhost:3000/courses/${id}`);
+  removeCourse(id: string): Observable<void> {
+    return this.http.delete<void>(`courses/${id}`);
   }
 }

@@ -19,6 +19,10 @@ import { AddCourseComponent } from './components/add-course/add-course.component
 import { AuthGuard } from '../auth/guards/auth.guard';
 import { HttpClientModule } from '@angular/common/http';
 import { SharedModule } from '../shared/shared.module';
+import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
+import { coursesFeatureKey, coursesReducer } from './state/courses.reducer';
+import { CoursesEffects } from './state/courses.effects';
 
 export const routes: Routes = [
   {
@@ -61,6 +65,8 @@ export const routes: Routes = [
     MatButtonModule,
     HttpClientModule,
     SharedModule,
+    StoreModule.forFeature(coursesFeatureKey, coursesReducer),
+    EffectsModule.forFeature([CoursesEffects])
   ],
   exports: [
     HeaderComponent,
