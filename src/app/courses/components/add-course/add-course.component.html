@@ -21,7 +21,12 @@
       <div class="course__authors-header">Authors</div>
     </div>
     <div class="course__actions">
-      <button mat-button class="course__save" routerLink="../" (click)="addCourse()">Save</button>
+      <button mat-button
+              class="course__save"
+              routerLink="../"
+              (click)="courseId ? updateCourse() : addCourse()">
+        Save
+      </button>
       <button mat-button class="course__cancel" routerLink="../">Cancel</button>
     </div>
   </div>

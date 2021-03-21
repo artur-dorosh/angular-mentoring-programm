@@ -2,6 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { CoursesService } from '../../services/courses.service';
 import { delay, takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
+import { ICourse } from '../../interfaces/course.interface';
 
 @Component({
   selector: 'app-breadcrumbs',
@@ -21,7 +22,7 @@ export class BreadcrumbsComponent implements OnInit, OnDestroy {
       takeUntil(this.onDestroy$)
     ).subscribe(id => {
       if (id) {
-        this.courseTitle = this.courseService.getCourse(id).title;
+        this.courseService.getCourse(id).subscribe((course: ICourse) => this.courseTitle = course.title);
       } else {
         this.courseTitle = '';
       }

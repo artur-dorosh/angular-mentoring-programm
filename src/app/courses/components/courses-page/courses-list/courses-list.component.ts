@@ -11,14 +11,15 @@ export class CoursesListComponent implements OnInit {
 
   @Output() delete: EventEmitter<string> = new EventEmitter<string>();
   @Output() edit: EventEmitter<string> = new EventEmitter<string>();
+  @Output() loadMore: EventEmitter<void> = new EventEmitter<void>();
 
   constructor() { }
 
   ngOnInit(): void {
   }
 
-  loadMore(): void {
-    console.log('Loading more courses...');
+  onLoadMore(): void {
+    this.loadMore.emit();
   }
 
   onDelete(id: string): void {

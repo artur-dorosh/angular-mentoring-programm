@@ -3,6 +3,7 @@ import { v4 as uuid } from 'uuid';
 import { CoursesService } from '../../services/courses.service';
 import { ICourse } from '../../interfaces/course.interface';
 import { ActivatedRoute } from '@angular/router';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 @Component({
   selector: 'app-add-course',
@@ -15,16 +16,9 @@ export class AddCourseComponent implements OnInit, OnDestroy {
   date: string;
   duration: number;
 
-  get getCourseId(): string {
-    return this.courseId;
-  }
+  courseId: string;
 
-  set setCourseId(id: string) {
-    this.courseId = id;
-  }
-
-  private currentCourse: ICourse;
-  private courseId: string;
+  private currentCourse$: BehaviorSubject<ICourse> = new BehaviorSubject<ICourse>(null);
 
   constructor(
     private courseService: CoursesService,
@@ -36,9 +30,10 @@ export class AddCourseComponent implements OnInit, OnDestroy {
 
     if (this.courseId) {
       this.courseService.currentCourseId.next(this.courseId);
-      this.currentCourse = this.courseService.getCourse(this.courseId);
-      console.log(this.currentCourse);
-      this.initCourse(this.currentCourse);
+      this.courseService.getCourse(this.courseId).subscribe((course: ICourse) => {
+        this.currentCourse$.next(course);
+        this.initCourse(course);
+      });
     }
   }
 
@@ -50,28 +45,28 @@ export class AddCourseComponent implements OnInit, OnDestroy {
   }
 
   addCourse(): void {
-    let course;
+    const course = {
+      id: uuid(),
+      title: this.title,
+      description: this.description,
+      creationDate: this.date,
+      duration: this.duration,
+      topRated: false
+    };
 
-    if (this.courseId) {
-      course = {
-        ...this.currentCourse,
-        title: this.title,
-        description: this.description,
-        creationDate: this.date,
-        duration: this.duration,
-      };
-    } else {
-      course = {
-        id: uuid(),
-        title: this.title,
-        description: this.description,
-        creationDate: this.date,
-        duration: this.duration,
-        topRated: false
-      };
-    }
+    this.courseService.createCourse(course).subscribe();
+  }
 
-    this.courseId ? this.courseService.updateCourse(course) : this.courseService.createCourse(course);
+  updateCourse(): void {
+    const course = {
+      ...this.currentCourse$.getValue(),
+      title: this.title,
+      description: this.description,
+      creationDate: this.date,
+      duration: this.duration,
+    };
+
+    this.courseService.updateCourse(course).subscribe();
   }
 
   ngOnDestroy(): void {
