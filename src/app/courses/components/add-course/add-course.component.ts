@@ -3,7 +3,8 @@ import { v4 as uuid } from 'uuid';
 import { CoursesService } from '../../services/courses.service';
 import { ICourse } from '../../interfaces/course.interface';
 import { ActivatedRoute } from '@angular/router';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
+import { LoaderHandlingService } from '../../../shared/services/loader-handling.service';
 
 @Component({
   selector: 'app-add-course',
@@ -17,10 +18,12 @@ export class AddCourseComponent implements OnInit, OnDestroy {
   duration: number;
 
   courseId: string;
+  isLoading: boolean;
 
   private currentCourse$: BehaviorSubject<ICourse> = new BehaviorSubject<ICourse>(null);
 
   constructor(
+    public loaderHandlingService: LoaderHandlingService,
     private courseService: CoursesService,
     private route: ActivatedRoute
   ) { }
@@ -30,9 +33,12 @@ export class AddCourseComponent implements OnInit, OnDestroy {
 
     if (this.courseId) {
       this.courseService.currentCourseId.next(this.courseId);
+      this.loaderHandlingService.loadingState = true;
+
       this.courseService.getCourse(this.courseId).subscribe((course: ICourse) => {
         this.currentCourse$.next(course);
         this.initCourse(course);
+        this.loaderHandlingService.loadingState = false;
       });
     }
   }

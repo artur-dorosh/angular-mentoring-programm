@@ -5,8 +5,8 @@ import { MatDialog } from '@angular/material';
 import { ConfirmationDialogComponent } from '../confirmation-dialog/confirmation-dialog.component';
 import { filter, switchMap, take } from 'rxjs/operators';
 import { Observable } from 'rxjs';
-
-export const itemsPerPage = 2;
+import { ITEMS_PER_PAGE } from '../../constants/pagination-settings';
+import { LoaderHandlingService } from '../../../shared/services/loader-handling.service';
 
 @Component({
   selector: 'app-courses-page',
@@ -19,11 +19,12 @@ export class CoursesPageComponent implements OnInit {
 
   currentCourseId: string;
 
-  private coursesCount = itemsPerPage;
+  private coursesCount = ITEMS_PER_PAGE;
 
   constructor(
+    public loaderHandlingService: LoaderHandlingService,
     private coursesService: CoursesService,
-    private dialog: MatDialog
+    private dialog: MatDialog,
   ) { }
 
   ngOnInit(): void {
@@ -44,8 +45,14 @@ export class CoursesPageComponent implements OnInit {
     }).afterClosed().pipe(
       take(1),
       filter(Boolean),
-      switchMap(() => this.coursesService.removeCourse(id))
-    ).subscribe(() => this.courses$ = this.coursesService.getCoursesList());
+      switchMap(() => {
+        this.loaderHandlingService.loadingState = true;
+        return this.coursesService.removeCourse(id);
+      })
+    ).subscribe(() => {
+      this.courses$ = this.coursesService.getCoursesList();
+      this.loaderHandlingService.loadingState = false;
+    });
   }
 
   editCourse(id: string): void {
@@ -61,7 +68,7 @@ export class CoursesPageComponent implements OnInit {
   }
 
   loadMore(): void {
-    this.coursesCount += itemsPerPage;
+    this.coursesCount += ITEMS_PER_PAGE;
 
     this.courses$ = this.coursesService.getCoursesList(this.coursesCount);
   }

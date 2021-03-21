@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { ICourse } from '../interfaces/course.interface';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
-import { itemsPerPage } from '../components/courses-page/courses-page.component';
+import { ITEMS_PER_PAGE } from '../constants/pagination-settings';
 
 @Injectable({
   providedIn: 'root'
@@ -12,11 +12,11 @@ export class CoursesService {
 
   constructor(private http: HttpClient) { }
 
-  getCoursesList(coursesCount: number = itemsPerPage): Observable<ICourse[]> {
+  getCoursesList(coursesCount: number = ITEMS_PER_PAGE): Observable<ICourse[]> {
     return this.http.get<ICourse[]>(`http://localhost:3000/courses?_limit=${coursesCount}`);
   }
 
-  getFilteredCourses(query: string): Observable<ICourse[]> {
+  getFilteredCourses(query: string, coursesCount: number = ITEMS_PER_PAGE): Observable<ICourse[]> {
     return this.http.get<ICourse[]>(`http://localhost:3000/courses?title_like=${query}`);
   }
 

@@ -5,9 +5,6 @@
            class="search-block__input"
            placeholder="Text to search"
            [(ngModel)]="searchInput"
-           (keydown.enter)="search()">
-  </div>
-  <div class="search-button" (click)="search()">
-    Search
+           (keyup)="search()">
   </div>
 </div>

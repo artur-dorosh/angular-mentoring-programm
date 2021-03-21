@@ -16,6 +16,13 @@
   display: flex;
   color: $color-white-100;
 
+  .user {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-transform: capitalize;
+  }
+
   .login {
     display: flex;
     align-items: center;
@@ -23,7 +30,7 @@
     background: transparent;
     border: none;
     outline: none;
-    cursor: pointer;i
+    cursor: pointer;
 
     &__icon {
       display: flex;
