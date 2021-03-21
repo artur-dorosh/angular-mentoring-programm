@@ -18,19 +18,20 @@ import { RouterModule, Routes } from '@angular/router';
 import { AddCourseComponent } from './components/add-course/add-course.component';
 import { AuthGuard } from '../auth/guards/auth.guard';
 import { HttpClientModule } from '@angular/common/http';
+import { SharedModule } from '../shared/shared.module';
 
 export const routes: Routes = [
   {
-    path: '',
+    path: 'courses',
     component: CoursesPageComponent,
     canActivate: [ AuthGuard ],
     pathMatch: 'full',
   }, {
-    path: 'new',
+    path: 'courses/new',
     component: AddCourseComponent,
     canActivate: [ AuthGuard ],
   }, {
-    path: ':id',
+    path: 'courses/:id',
     component: AddCourseComponent,
     canActivate: [ AuthGuard ],
   },
@@ -59,6 +60,7 @@ export const routes: Routes = [
     RouterModule.forChild(routes),
     MatButtonModule,
     HttpClientModule,
+    SharedModule,
   ],
   exports: [
     HeaderComponent,

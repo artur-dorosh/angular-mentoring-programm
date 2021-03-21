@@ -3,6 +3,7 @@
     <div class="header-block">
       <app-logo></app-logo>
       <div class="authorization">
+        <div class="user" *ngIf="authService.isAuthenticated()">{{ (authService.currentUser$ | async)?.login }}</div>
         <div class="login" *ngIf="!authService.isAuthenticated()" routerLink="/login">
           <span class="material-icons login__icon">person</span>
           User login

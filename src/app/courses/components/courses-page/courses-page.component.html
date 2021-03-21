@@ -16,6 +16,7 @@
                         (loadMore)="loadMore()">
       </app-courses-list>
 
+      <app-loading-page *ngIf="!(courses$ | async)"></app-loading-page>
     </div>
   </div>
 </div>
