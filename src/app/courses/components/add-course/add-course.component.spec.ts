@@ -36,10 +36,4 @@ describe('AddCourseComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
-
-  it('should return current course id', () => {
-    component.setCourseId = '1';
-
-    expect(component.getCourseId).toBe('1');
-  });
 });

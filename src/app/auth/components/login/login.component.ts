@@ -23,11 +23,11 @@ export class LoginComponent implements OnInit {
     const userInfo = {
       email: this.email,
       password: this.password,
-      token: 'new user'
+      token: 'newUser'
     };
 
-    this.authService.login(userInfo);
-    this.router.navigate(['../courses']);
-    console.log('logged in successfully');
+    this.authService.login(userInfo).subscribe(() => {
+      this.router.navigate(['../courses']);
+    });
   }
 }

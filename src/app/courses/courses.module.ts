@@ -17,6 +17,7 @@ import { FormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
 import { AddCourseComponent } from './components/add-course/add-course.component';
 import { AuthGuard } from '../auth/guards/auth.guard';
+import { HttpClientModule } from '@angular/common/http';
 
 export const routes: Routes = [
   {
@@ -57,6 +58,7 @@ export const routes: Routes = [
     FormsModule,
     RouterModule.forChild(routes),
     MatButtonModule,
+    HttpClientModule,
   ],
   exports: [
     HeaderComponent,

@@ -2,17 +2,17 @@
   <div class="container">
     <div class="courses-list-block">
 
-      <ng-container *ngIf="courses.length">
+      <ng-container *ngIf="courses?.length">
         <app-course-item *ngFor="let course of courses | orderBy: 'desc'"
                          [course]="course"
                          (delete)="onDelete($event)"
                          (edit)="onEdit($event)">
         </app-course-item>
 
-        <div class="load-more" (click)="loadMore()">Load more</div>
+        <div class="load-more" (click)="onLoadMore()">Load more</div>
       </ng-container>
 
-      <div class="no-data" *ngIf="!courses.length">
+      <div class="no-data" *ngIf="!courses?.length">
         {{ 'No data. Feel free to add new course' | uppercase }}
       </div>
     </div>

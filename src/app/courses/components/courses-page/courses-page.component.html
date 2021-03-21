@@ -10,9 +10,10 @@
         </div>
       </div>
 
-      <app-courses-list [courses]="courses"
+      <app-courses-list [courses]="courses$ | async"
                         (delete)="deleteCourse($event)"
-                        (edit)="editCourse($event)">
+                        (edit)="editCourse($event)"
+                        (loadMore)="loadMore()">
       </app-courses-list>
 
     </div>
