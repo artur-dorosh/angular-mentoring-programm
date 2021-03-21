@@ -13,8 +13,6 @@ export class CourseItemComponent {
   @Output() delete: EventEmitter<string> = new EventEmitter<string>();
   @Output() edit: EventEmitter<string> = new EventEmitter<string>();
 
-  constructor() { }
-
   onDelete(): void {
     this.delete.emit(this.course.id);
   }

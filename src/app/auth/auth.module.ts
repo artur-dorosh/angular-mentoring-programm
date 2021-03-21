@@ -15,14 +15,14 @@ export const routes: Routes = [
 ];
 
 @NgModule({
-  declarations: [LoginComponent],
+  declarations: [ LoginComponent ],
     imports: [
         CommonModule,
         FormsModule,
         RouterModule.forChild(routes),
         HttpClientModule,
     ],
-  exports: [LoginComponent],
+  exports: [ LoginComponent ],
   providers: [
     {
       provide: HTTP_INTERCEPTORS,

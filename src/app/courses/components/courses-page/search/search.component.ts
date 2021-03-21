@@ -17,8 +17,6 @@ export class SearchComponent implements OnInit, OnDestroy {
 
   private onDestroy$: Subject<void> = new Subject<void>();
 
-  constructor() { }
-
   ngOnInit(): void {
     this.query$.pipe(
       filter((query: string) => query.length >= 3 || !query.length),

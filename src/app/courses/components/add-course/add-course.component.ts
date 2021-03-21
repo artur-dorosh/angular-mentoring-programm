@@ -3,7 +3,7 @@ import { v4 as uuid } from 'uuid';
 import { CoursesService } from '../../services/courses.service';
 import { ICourse } from '../../interfaces/course.interface';
 import { ActivatedRoute } from '@angular/router';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
 import { LoaderHandlingService } from '../../../shared/services/loader-handling.service';
 
 @Component({

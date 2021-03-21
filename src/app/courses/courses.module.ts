@@ -69,6 +69,6 @@ export const routes: Routes = [
     BreadcrumbsComponent,
     LogoComponent,
   ],
-  entryComponents: [ConfirmationDialogComponent]
+  entryComponents: [ ConfirmationDialogComponent ]
 })
 export class CoursesModule { }
