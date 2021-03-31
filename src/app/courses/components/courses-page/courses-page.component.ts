@@ -1,38 +1,41 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { ICourse } from '../../interfaces/course.interface';
 import { CoursesService } from '../../services/courses.service';
 import { MatDialog } from '@angular/material';
 import { ConfirmationDialogComponent } from '../confirmation-dialog/confirmation-dialog.component';
-import { filter, switchMap, take } from 'rxjs/operators';
+import { filter, take } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { ITEMS_PER_PAGE } from '../../constants/pagination-settings';
-import { LoaderHandlingService } from '../../../shared/services/loader-handling.service';
+import { Store } from '@ngrx/store';
+import { ICoursesState } from '../../state/courses.reducer';
+import { selectCourses, selectCoursesLoading } from '../../state/courses.selectors';
+import * as CoursesActions from '../../state/courses.actions';
 
 @Component({
   selector: 'app-courses-page',
   templateUrl: './courses-page.component.html',
-  styleUrls: ['./courses-page.component.scss']
+  styleUrls: ['./courses-page.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CoursesPageComponent implements OnInit {
-  courses$: Observable<ICourse[]>;
-  currentlyChangeCourse = false;
-
-  currentCourseId: string;
+  readonly courses$: Observable<ICourse[]> = this.store.select(selectCourses);
+  readonly isLoading$: Observable<boolean> = this.store.select(selectCoursesLoading);
 
   private coursesCount = ITEMS_PER_PAGE;
 
   constructor(
-    public loaderHandlingService: LoaderHandlingService,
     private coursesService: CoursesService,
+    private store: Store<ICoursesState>,
     private dialog: MatDialog,
   ) { }
 
   ngOnInit(): void {
-    this.courses$ = this.coursesService.getCoursesList();
+    this.store.dispatch(CoursesActions.loadCourses({ query: '', coursesCount: ITEMS_PER_PAGE }));
+    this.store.dispatch(CoursesActions.resetCurrentCourse());
   }
 
-  search(value: string): void {
-    this.courses$ = value ? this.coursesService.getFilteredCourses(value) : this.coursesService.getCoursesList();
+  search(query: string): void {
+    this.store.dispatch(CoursesActions.loadCourses({ query, coursesCount: ITEMS_PER_PAGE }));
   }
 
   deleteCourse(id: string): void {
@@ -45,31 +48,18 @@ export class CoursesPageComponent implements OnInit {
     }).afterClosed().pipe(
       take(1),
       filter(Boolean),
-      switchMap(() => {
-        this.loaderHandlingService.loadingState = true;
-        return this.coursesService.removeCourse(id);
-      })
     ).subscribe(() => {
-      this.courses$ = this.coursesService.getCoursesList();
-      this.loaderHandlingService.loadingState = false;
+      this.store.dispatch(CoursesActions.deleteCourse({ id }));
     });
   }
 
   editCourse(id: string): void {
-    this.currentlyChangeCourse = true;
-    this.currentCourseId = id;
-  }
-
-  updateCoursesList(value: boolean): void {
-    if (value) {
-      this.courses$ = this.coursesService.getCoursesList();
-    }
-    this.currentlyChangeCourse = false;
+    this.store.dispatch(CoursesActions.loadCourse({ id }));
   }
 
   loadMore(): void {
     this.coursesCount += ITEMS_PER_PAGE;
 
-    this.courses$ = this.coursesService.getCoursesList(this.coursesCount);
+    this.store.dispatch(CoursesActions.loadCourses({ query: '', coursesCount: this.coursesCount }));
   }
 }

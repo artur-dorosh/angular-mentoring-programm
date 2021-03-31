@@ -6,57 +6,57 @@
       "creationDate": "2021-05-09",
       "duration": 84,
       "description": "Learn about where you can find course descriptions, what information they include, how they work, and detail about various components of a course description. Learn about where you can find course descriptions, what information they include, how they work, and detail about various components of a course description.",
-      "topRated": "false"
+      "topRated": false
     },
     {
       "id": "18dee72d-6a83-4aa7-b7d4-27f7815d864",
-      "title": "Angular 6+. For beginners",
+      "title": "Angular 6. For beginners",
       "creationDate": "2021-03-24",
       "duration": 61,
       "description": "Learn about where you can find course descriptions, what information they include, how they work, and detail about various components of a course description. Learn about where you can find course descriptions, what information they include, how they work, and detail about various components of a course description.",
-      "topRated": "true"
+      "topRated": true
     },
     {
       "id": "c45546c7-d6cc-4b02-bf75-44144bc8772b",
-      "title": "TypeScript. From junior to lead",
+      "title": "TypeScript. From junior to lead.",
       "creationDate": "2020-12-27",
       "duration": 100,
       "description": "Learn about where you can find course descriptions, what information they include, how they work, and detail about various components of a course description. Learn about where you can find course descriptions, what information they include, how they work, and detail about various components of a course description.",
-      "topRated": "true"
+      "topRated": true
     },
     {
-      "id": "eb8c25d1-9361-4199-9561-3a2f826888d5",
+      "id": "eb8c25d1-9361-4199-9561-3a2f826888d6",
       "title": "ES6",
       "creationDate": "2020-12-09",
       "duration": 32,
       "description": "Learn about where you can find course descriptions, what information they include, how they work, and detail about various components of a course description. Learn about where you can find course descriptions, what information they include, how they work, and detail about various components of a course description.",
-      "topRated": "false"
+      "topRated": false
     },
     {
-      "id": "18dee72d-6a83-4aa7-b7d4-27f7815d864",
-      "title": "Angular 2+. Advanced course",
+      "id": "18dee72d-6a83-4aa7-b7d4-27f7815d865",
+      "title": "Angular 2. Advanced course",
       "creationDate": "2020-12-01",
       "duration": 19,
       "description": "Learn about where you can find course descriptions, what information they include, how they work, and detail about various components of a course description. Learn about where you can find course descriptions, what information they include, how they work, and detail about various components of a course description.",
-      "topRated": "true"
+      "topRated": true
     },
     {
-      "id": "c45546c7-d6cc-4b02-bf75-44144bc8772b",
+      "id": "c45546c7-d6cc-4b02-bf75-44144bc8772c",
       "title": "Ivy. What is new",
       "creationDate": "2021-03-19",
       "duration": 176,
       "description": "Learn about where you can find course descriptions, what information they include, how they work, and detail about various components of a course description. Learn about where you can find course descriptions, what information they include, how they work, and detail about various components of a course description.",
-      "topRated": "true"
+      "topRated": true
     }
   ],
   "users": [
     {
-      "login": "artemii",
+      "email": "artemii",
       "password": "test",
       "token": "first"
     },
     {
-      "login": "marina",
+      "email": "marina",
       "password": "test",
       "token": "second"
     }

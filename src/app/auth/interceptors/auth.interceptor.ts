@@ -6,19 +6,28 @@ import {
   HttpInterceptor
 } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { AuthService } from '../services/auth.service';
+import { select, Store } from '@ngrx/store';
+import { IAuthState } from '../state/auth.reducer';
+import { selectToken } from '../state/auth.selectors';
+import { first, mergeMap } from 'rxjs/operators';
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
 
-  constructor(private authService: AuthService) {}
+  constructor(private store: Store<IAuthState>) { }
 
   // tslint:disable-next-line:no-any
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    const authRequest = request.clone({
-      headers: request.headers.set('Authorization', this.authService.getToken),
-    });
+    return this.store.pipe(
+      select(selectToken),
+      first(),
+      mergeMap((token: string) => {
+        const authRequest = token ? request.clone({
+          headers: request.headers.set('Authorization', token),
+        }) : request;
 
-    return next.handle(authRequest);
+        return next.handle(authRequest);
+      })
+    )
   }
 }

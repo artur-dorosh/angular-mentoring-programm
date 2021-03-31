@@ -24,8 +24,8 @@ const descSort = (a: ICourse, b: ICourse): number => {
 })
 export class OrderByPipe implements PipeTransform {
 
-  transform(value: ICourse[], direction: string): ICourse[] {
-    return value.sort(direction === 'asc' ? ascSort : descSort);
+  transform(value: ICourse[], direction: string = 'desc'): ICourse[] {
+    return value.slice().sort(direction === 'asc' ? ascSort : descSort);
   }
 
 }

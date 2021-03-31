@@ -5,10 +5,15 @@ import { FormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { AuthInterceptor } from './interceptors/auth.interceptor';
+import { StoreModule } from '@ngrx/store';
+import { authFeatureKey, authReducer } from './state/auth.reducer';
+import { EffectsModule } from '@ngrx/effects';
+import { AuthEffects } from './state/auth.effects';
+import { SharedModule } from '../shared/shared.module';
 
 export const routes: Routes = [
   {
-    path: '',
+    path: 'login',
     component: LoginComponent,
     pathMatch: 'full',
   }
@@ -17,10 +22,13 @@ export const routes: Routes = [
 @NgModule({
   declarations: [ LoginComponent ],
     imports: [
-        CommonModule,
-        FormsModule,
-        RouterModule.forChild(routes),
-        HttpClientModule,
+      CommonModule,
+      FormsModule,
+      RouterModule.forChild(routes),
+      HttpClientModule,
+      SharedModule,
+      StoreModule.forFeature(authFeatureKey, authReducer),
+      EffectsModule.forFeature([AuthEffects]),
     ],
   exports: [ LoginComponent ],
   providers: [

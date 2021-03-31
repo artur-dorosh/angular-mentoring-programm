@@ -1,23 +1,28 @@
-import { Component, OnDestroy } from '@angular/core';
-import { AuthService } from '../../services/auth.service';
+import { ChangeDetectionStrategy, Component, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
-import { Subject } from 'rxjs';
-import { takeUntil } from 'rxjs/operators';
+import { Observable, Subject } from 'rxjs';
+import { Store } from '@ngrx/store';
+import { IAuthState } from '../../state/auth.reducer';
+import { login } from '../../state/auth.actions';
+import { selectAuthorizationLoading } from '../../state/auth.selectors';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  styleUrls: ['./login.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class LoginComponent implements OnDestroy {
-  email = '';
-  password = '';
+  email: string;
+  password: string;
+
+  isLoading$: Observable<boolean> = this.store.select(selectAuthorizationLoading);
 
   private onDestroy: Subject<void> = new Subject<void>();
 
   constructor(
-    private authService: AuthService,
-    private router: Router
+    private router: Router,
+    private store: Store<IAuthState>
   ) { }
 
   login(): void {
@@ -27,11 +32,7 @@ export class LoginComponent implements OnDestroy {
       token: 'newUser'
     };
 
-    this.authService.login(userInfo).pipe(
-      takeUntil(this.onDestroy),
-    ).subscribe(() => {
-      this.router.navigate(['../courses']);
-    });
+    this.store.dispatch(login({ userInfo }));
   }
 
   ngOnDestroy(): void {

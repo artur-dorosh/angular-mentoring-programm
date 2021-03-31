@@ -3,7 +3,7 @@
     <div class="courses-list-block">
 
       <ng-container *ngIf="courses?.length">
-        <app-course-item *ngFor="let course of courses | orderBy: 'desc'"
+        <app-course-item *ngFor="let course of courses | orderBy"
                          [course]="course"
                          (delete)="onDelete($event)"
                          (edit)="onEdit($event)">

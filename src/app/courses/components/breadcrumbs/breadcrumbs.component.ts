@@ -1,37 +1,29 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { CoursesService } from '../../services/courses.service';
-import { delay, takeUntil } from 'rxjs/operators';
-import { Subject } from 'rxjs';
+import { delay, map } from 'rxjs/operators';
+import { Observable } from 'rxjs';
 import { ICourse } from '../../interfaces/course.interface';
+import { ICoursesState } from '../../state/courses.reducer';
+import { select, Store } from '@ngrx/store';
+import { selectCurrentCourse } from '../../state/courses.selectors';
 
 @Component({
   selector: 'app-breadcrumbs',
   templateUrl: './breadcrumbs.component.html',
-  styleUrls: ['./breadcrumbs.component.scss']
+  styleUrls: ['./breadcrumbs.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class BreadcrumbsComponent implements OnInit, OnDestroy {
-  courseTitle: string;
+export class BreadcrumbsComponent {
+  courseTitle$: Observable<string>;
 
-  private onDestroy$: Subject<void> = new Subject<void>();
-
-  constructor(public courseService: CoursesService) { }
-
-  ngOnInit(): void {
-    this.courseService.currentCourseId.pipe(
+  constructor(
+    public coursesService: CoursesService,
+    private store: Store<ICoursesState>,
+  ) {
+    this.courseTitle$ = this.store.pipe(
+      select(selectCurrentCourse),
       delay(0),
-      takeUntil(this.onDestroy$)
-    ).subscribe(id => {
-      if (id) {
-        this.courseService.getCourse(id).subscribe((course: ICourse) => this.courseTitle = course.title);
-      } else {
-        this.courseTitle = '';
-      }
-    });
+      map((course: ICourse) => course ? course.title : null)
+    );
   }
-
-  ngOnDestroy(): void {
-    this.onDestroy$.next();
-    this.onDestroy$.complete();
-  }
-
 }

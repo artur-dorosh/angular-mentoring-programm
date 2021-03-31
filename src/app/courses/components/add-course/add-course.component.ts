@@ -1,15 +1,19 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/core';
 import { v4 as uuid } from 'uuid';
 import { CoursesService } from '../../services/courses.service';
 import { ICourse } from '../../interfaces/course.interface';
-import { ActivatedRoute } from '@angular/router';
-import { BehaviorSubject } from 'rxjs';
-import { LoaderHandlingService } from '../../../shared/services/loader-handling.service';
+import { BehaviorSubject, Observable, Subject } from 'rxjs';
+import { ICoursesState } from '../../state/courses.reducer';
+import { select, Store } from '@ngrx/store';
+import { selectCoursesLoading, selectCurrentCourse } from '../../state/courses.selectors';
+import { takeUntil } from 'rxjs/operators';
+import * as CoursesActions from '../../state/courses.actions';
 
 @Component({
   selector: 'app-add-course',
   templateUrl: './add-course.component.html',
-  styleUrls: ['./add-course.component.scss']
+  styleUrls: ['./add-course.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AddCourseComponent implements OnInit, OnDestroy {
   title: string;
@@ -17,37 +21,36 @@ export class AddCourseComponent implements OnInit, OnDestroy {
   date: string;
   duration: number;
 
-  courseId: string;
-  isLoading: boolean;
+  readonly isLoading$: Observable<boolean> = this.store.select(selectCoursesLoading);
 
   private currentCourse$: BehaviorSubject<ICourse> = new BehaviorSubject<ICourse>(null);
+  private onDestroy$: Subject<ICourse> = new Subject<ICourse>();
 
   constructor(
-    public loaderHandlingService: LoaderHandlingService,
-    private courseService: CoursesService,
-    private route: ActivatedRoute
-  ) { }
+    private coursesService: CoursesService,
+    private store: Store<ICoursesState>,
+  ) {
+    this.store.pipe(
+      select(selectCurrentCourse),
+      takeUntil(this.onDestroy$),
+    ).subscribe((course: ICourse) => this.currentCourse$.next(course));
+  }
 
   ngOnInit(): void {
-    this.courseId = this.route.snapshot.params.id;
-
-    if (this.courseId) {
-      this.courseService.currentCourseId.next(this.courseId);
-      this.loaderHandlingService.loadingState = true;
-
-      this.courseService.getCourse(this.courseId).subscribe((course: ICourse) => {
-        this.currentCourse$.next(course);
-        this.initCourse(course);
-        this.loaderHandlingService.loadingState = false;
-      });
-    }
+    this.initCourse(this.currentCourse$.getValue());
   }
 
   initCourse(course: ICourse): void {
-    this.title = course.title;
-    this.description = course.description;
-    this.date = course.creationDate;
-    this.duration = course.duration;
+    if (course) {
+      this.title = course.title;
+      this.description = course.description;
+      this.date = course.creationDate;
+      this.duration = course.duration;
+    }
+  }
+
+  save(): void {
+    this.currentCourse$.getValue() ? this.updateCourse() : this.addCourse();
   }
 
   addCourse(): void {
@@ -60,7 +63,7 @@ export class AddCourseComponent implements OnInit, OnDestroy {
       topRated: false
     };
 
-    this.courseService.createCourse(course).subscribe();
+    this.store.dispatch(CoursesActions.createCourse({ course }));
   }
 
   updateCourse(): void {
@@ -72,10 +75,11 @@ export class AddCourseComponent implements OnInit, OnDestroy {
       duration: this.duration,
     };
 
-    this.courseService.updateCourse(course).subscribe();
+    this.store.dispatch(CoursesActions.updateCourse({ course }));
   }
 
   ngOnDestroy(): void {
-    this.courseService.currentCourseId.next('');
+    this.onDestroy$.next();
+    this.onDestroy$.complete();
   }
 }
