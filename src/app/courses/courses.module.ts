@@ -13,7 +13,7 @@ import { DurationPipe } from './pipes/duration.pipe';
 import { OrderByPipe } from './pipes/order-by.pipe';
 import { ConfirmationDialogComponent } from './components/confirmation-dialog/confirmation-dialog.component';
 import { MatButtonModule, MatDialogModule } from '@angular/material';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
 import { AddCourseComponent } from './components/add-course/add-course.component';
 import { AuthGuard } from '../auth/guards/auth.guard';
@@ -66,7 +66,8 @@ export const routes: Routes = [
     HttpClientModule,
     SharedModule,
     StoreModule.forFeature(coursesFeatureKey, coursesReducer),
-    EffectsModule.forFeature([CoursesEffects])
+    EffectsModule.forFeature([CoursesEffects]),
+    ReactiveFormsModule,
   ],
   exports: [
     HeaderComponent,

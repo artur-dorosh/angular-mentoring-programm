@@ -3,18 +3,42 @@
     {
       "id": "eb8c25d1-9361-4199-9561-3a2f826888d5",
       "title": "JavaScript. Basic knowledge",
-      "creationDate": "2021-05-09",
+      "creationDate": "2021-5-9",
       "duration": 84,
       "description": "Learn about where you can find course descriptions, what information they include, how they work, and detail about various components of a course description. Learn about where you can find course descriptions, what information they include, how they work, and detail about various components of a course description.",
-      "topRated": false
+      "topRated": false,
+      "authors": [
+        {
+          "id": "c45546c5-d6cc-4b02-bf75-4a144bc8772c",
+          "firstName": "Dominika",
+          "lastName": "Shelby"
+        },
+        {
+          "id": "c49546c7-d6fc-4b12-bf75-44144dc8772c",
+          "firstName": "Emilia",
+          "lastName": "Clarke"
+        },
+        {
+          "id": "c40546c7-d6fc-4b02-bf75-44144dc8772c",
+          "firstName": "Sherlock",
+          "lastName": "Holmes"
+        }
+      ]
     },
     {
       "id": "18dee72d-6a83-4aa7-b7d4-27f7815d864",
       "title": "Angular 6. For beginners",
-      "creationDate": "2021-03-24",
+      "creationDate": "2021-3-24",
       "duration": 61,
       "description": "Learn about where you can find course descriptions, what information they include, how they work, and detail about various components of a course description. Learn about where you can find course descriptions, what information they include, how they work, and detail about various components of a course description.",
-      "topRated": true
+      "topRated": true,
+      "authors": [
+        {
+          "id": "c45546c5-d6cc-4b02-bf75-4a144bc8772c",
+          "firstName": "Dominika",
+          "lastName": "Shelby"
+        }
+      ]
     },
     {
       "id": "c45546c7-d6cc-4b02-bf75-44144bc8772b",
@@ -22,7 +46,14 @@
       "creationDate": "2020-12-27",
       "duration": 100,
       "description": "Learn about where you can find course descriptions, what information they include, how they work, and detail about various components of a course description. Learn about where you can find course descriptions, what information they include, how they work, and detail about various components of a course description.",
-      "topRated": true
+      "topRated": true,
+      "authors": [
+        {
+          "id": "c45546c5-d6cc-4b02-bf75-4a144bc8772c",
+          "firstName": "Dominika",
+          "lastName": "Shelby"
+        }
+      ]
     },
     {
       "id": "eb8c25d1-9361-4199-9561-3a2f826888d6",
@@ -30,23 +61,79 @@
       "creationDate": "2020-12-09",
       "duration": 32,
       "description": "Learn about where you can find course descriptions, what information they include, how they work, and detail about various components of a course description. Learn about where you can find course descriptions, what information they include, how they work, and detail about various components of a course description.",
-      "topRated": false
+      "topRated": false,
+      "authors": [
+        {
+          "id": "c45546c5-d6cc-4b02-bf75-4a144bc8772c",
+          "firstName": "Dominika",
+          "lastName": "Shelby"
+        }
+      ]
     },
     {
       "id": "18dee72d-6a83-4aa7-b7d4-27f7815d865",
       "title": "Angular 2. Advanced course",
-      "creationDate": "2020-12-01",
+      "creationDate": "2020-12-1",
       "duration": 19,
       "description": "Learn about where you can find course descriptions, what information they include, how they work, and detail about various components of a course description. Learn about where you can find course descriptions, what information they include, how they work, and detail about various components of a course description.",
-      "topRated": true
+      "topRated": true,
+      "authors": [
+        {
+          "id": "c45546c5-d6cc-4b02-bf75-4a144bc8772c",
+          "firstName": "Dominika",
+          "lastName": "Shelby"
+        }
+      ]
     },
     {
       "id": "c45546c7-d6cc-4b02-bf75-44144bc8772c",
       "title": "Ivy. What is new",
-      "creationDate": "2021-03-19",
+      "creationDate": "2021-3-19",
       "duration": 176,
       "description": "Learn about where you can find course descriptions, what information they include, how they work, and detail about various components of a course description. Learn about where you can find course descriptions, what information they include, how they work, and detail about various components of a course description.",
-      "topRated": true
+      "topRated": true,
+      "authors": [
+        {
+          "id": "c45546c5-d6cc-4b02-bf75-4a144bc8772c",
+          "firstName": "Dominika",
+          "lastName": "Shelby"
+        }
+      ]
+    },
+    {
+      "title": "First custom course",
+      "description": "Custom description",
+      "creationDate": "2021-4-16",
+      "duration": 173,
+      "authors": [
+        {
+          "id": "c45546c5-d6cc-4b02-bf75-4a144bc8772c",
+          "firstName": "Dominika",
+          "lastName": "Shelby"
+        },
+        {
+          "id": "a495e6c7-d6fc-4b12-bf95-44144dc8772c",
+          "firstName": "Jesse",
+          "lastName": "Eisenberg"
+        }
+      ],
+      "id": "4a4646c2-82b7-4246-8e54-0ac82ef1609c",
+      "topRated": false
+    },
+    {
+      "id": "8019c815-c420-4ad8-a654-41530beac45f",
+      "title": "test",
+      "description": "test",
+      "creationDate": "2021-4-22",
+      "duration": 55,
+      "authors": [
+        {
+          "id": "a495e6c7-d6fc-4b12-bf95-44144dc8772c",
+          "firstName": "Jesse",
+          "lastName": "Eisenberg"
+        }
+      ],
+      "topRated": false
     }
   ],
   "users": [
@@ -59,6 +146,28 @@
       "email": "marina",
       "password": "test",
       "token": "second"
+    }
+  ],
+  "authors": [
+    {
+      "id": "c45546c5-d6cc-4b02-bf75-4a144bc8772c",
+      "firstName": "Dominika",
+      "lastName": "Shelby"
+    },
+    {
+      "id": "c40546c7-d6fc-4b02-bf75-44144dc8772c",
+      "firstName": "Sherlock",
+      "lastName": "Holmes"
+    },
+    {
+      "id": "c49546c7-d6fc-4b12-bf75-44144dc8772c",
+      "firstName": "Emilia",
+      "lastName": "Clarke"
+    },
+    {
+      "id": "a495e6c7-d6fc-4b12-bf95-44144dc8772c",
+      "firstName": "Jesse",
+      "lastName": "Eisenberg"
     }
   ]
 }

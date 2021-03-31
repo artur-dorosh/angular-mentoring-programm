@@ -8,6 +8,7 @@ import { select, Store } from '@ngrx/store';
 import { selectCoursesLoading, selectCurrentCourse } from '../../state/courses.selectors';
 import { takeUntil } from 'rxjs/operators';
 import * as CoursesActions from '../../state/courses.actions';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-add-course',
@@ -16,19 +17,17 @@ import * as CoursesActions from '../../state/courses.actions';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AddCourseComponent implements OnInit, OnDestroy {
-  title: string;
-  description: string;
-  date: string;
-  duration: number;
+  form: FormGroup;
 
   readonly isLoading$: Observable<boolean> = this.store.select(selectCoursesLoading);
 
   private currentCourse$: BehaviorSubject<ICourse> = new BehaviorSubject<ICourse>(null);
-  private onDestroy$: Subject<ICourse> = new Subject<ICourse>();
+  private onDestroy$: Subject<void> = new Subject<void>();
 
   constructor(
     private coursesService: CoursesService,
     private store: Store<ICoursesState>,
+    private fb: FormBuilder,
   ) {
     this.store.pipe(
       select(selectCurrentCourse),
@@ -37,49 +36,52 @@ export class AddCourseComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
+    this.initForm();
     this.initCourse(this.currentCourse$.getValue());
-  }
-
-  initCourse(course: ICourse): void {
-    if (course) {
-      this.title = course.title;
-      this.description = course.description;
-      this.date = course.creationDate;
-      this.duration = course.duration;
-    }
   }
 
   save(): void {
     this.currentCourse$.getValue() ? this.updateCourse() : this.addCourse();
   }
 
-  addCourse(): void {
+  ngOnDestroy(): void {
+    this.onDestroy$.next();
+    this.onDestroy$.complete();
+  }
+
+  private initForm(): void {
+    this.form = this.fb.group({
+      title: ['', [Validators.required, Validators.maxLength(50)]],
+      description: ['', [Validators.required, Validators.maxLength(500)]],
+      creationDate: ['', Validators.required],
+      duration: ['', Validators.required],
+      authors: [[], Validators.required],
+    });
+  }
+
+  private initCourse(course: ICourse): void {
+    if (course) {
+      const { id, topRated, ...formValue } = course;
+      this.form.setValue(formValue);
+    }
+  }
+
+  private addCourse(): void {
     const course = {
       id: uuid(),
-      title: this.title,
-      description: this.description,
-      creationDate: this.date,
-      duration: this.duration,
-      topRated: false
+      ...this.form.value,
+      topRated: false,
     };
 
     this.store.dispatch(CoursesActions.createCourse({ course }));
   }
 
-  updateCourse(): void {
+  private updateCourse(): void {
     const course = {
       ...this.currentCourse$.getValue(),
-      title: this.title,
-      description: this.description,
-      creationDate: this.date,
-      duration: this.duration,
+      ...this.form.value,
     };
 
     this.store.dispatch(CoursesActions.updateCourse({ course }));
-  }
-
-  ngOnDestroy(): void {
-    this.onDestroy$.next();
-    this.onDestroy$.complete();
   }
 }

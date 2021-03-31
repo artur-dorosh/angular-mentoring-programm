@@ -39,7 +39,7 @@ export const reducer = createReducer(
 
   on(coursesActions.loadCoursesSuccess, (state: ICoursesState, { courses }) => ({
     ...state,
-    courses: [ ...courses ],
+    courses,
     isLoading: false,
   })),
 

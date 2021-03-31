@@ -1,10 +1,11 @@
-import { ChangeDetectionStrategy, Component, OnDestroy } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable, Subject } from 'rxjs';
 import { Store } from '@ngrx/store';
 import { IAuthState } from '../../state/auth.reducer';
 import { login } from '../../state/auth.actions';
 import { selectAuthorizationLoading } from '../../state/auth.selectors';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-login',
@@ -12,9 +13,8 @@ import { selectAuthorizationLoading } from '../../state/auth.selectors';
   styleUrls: ['./login.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class LoginComponent implements OnDestroy {
-  email: string;
-  password: string;
+export class LoginComponent implements OnInit, OnDestroy {
+  loginForm: FormGroup;
 
   isLoading$: Observable<boolean> = this.store.select(selectAuthorizationLoading);
 
@@ -22,13 +22,17 @@ export class LoginComponent implements OnDestroy {
 
   constructor(
     private router: Router,
-    private store: Store<IAuthState>
+    private store: Store<IAuthState>,
+    private fb: FormBuilder,
   ) { }
+
+  ngOnInit(): void {
+    this.initForm();
+  }
 
   login(): void {
     const userInfo = {
-      email: this.email,
-      password: this.password,
+      ...this.loginForm.value,
       token: 'newUser'
     };
 
@@ -38,5 +42,12 @@ export class LoginComponent implements OnDestroy {
   ngOnDestroy(): void {
     this.onDestroy.next();
     this.onDestroy.complete();
+  }
+
+  private initForm(): void {
+    this.loginForm = this.fb.group({
+      email: [null, Validators.required],
+      password: [null, Validators.required],
+    });
   }
 }

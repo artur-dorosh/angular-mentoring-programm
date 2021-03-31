@@ -4,7 +4,6 @@
     <input type="text"
            class="search-block__input"
            placeholder="Text to search"
-           [(ngModel)]="searchInput"
-           (keyup)="search()">
+           [formControl]="searchControl">
   </div>
 </div>

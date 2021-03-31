@@ -27,46 +27,41 @@
     }
   }
 
-  &__date {
-
-    &-input {
-      padding-left: 10px;
-      width: 220px;
-      height: 30px;
-      outline: none;
-    }
-  }
-
-  &__duration {
-
-    &-input {
-      margin-right: 15px;
-      padding-left: 10px;
-      width: 220px;
-      height: 30px;
-      outline: none;
-    }
-
-    &-value {
-      font-size: 14px;
-    }
+  &__duration-value {
+    margin-left: 5px;
   }
 
   &__actions {
     display: flex;
     align-items: center;
-    margin-top: 30px;
+    margin: 30px 0 20px;
   }
 
   &__save {
     margin-right: 15px;
     color: $color-white-100;
     background: $color-main-green;
+
+    &:disabled {
+      color: $color-white-100;
+      background: $color-grey-20;
+      cursor: not-allowed;
+    }
   }
 
   &__cancel {
     color: $color-white-100;
     background: $color-main-blue;
+  }
+
+  .invalid {
+    border: 2px solid $color-error;
+  }
+
+  .error {
+    margin-top: 3px;
+    font-size: 12px;
+    color: $color-error;
   }
 }
 

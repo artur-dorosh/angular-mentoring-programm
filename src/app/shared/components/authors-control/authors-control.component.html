@@ -1,0 +1,18 @@
+<div class="authors-control" [class.invalid]="pickedAuthors.dirty && pickedAuthors.invalid">
+  <div class="picked-author" *ngFor="let pickedAuthor of pickedAuthors.value">
+    {{ pickedAuthor.firstName }} {{ pickedAuthor.lastName }}
+    <span class="material-icons close-icon" (click)="removeAuthor(pickedAuthor)">close</span>
+  </div>
+
+  <input type="text" class="authors" placeholder="Search author..."
+         (focus)="toggleAuthorsList()"
+         [formControl]="authorInput">
+
+  <div *ngIf="showAuthors" class="authors-list">
+    <div class="author"
+         *ngFor="let author of (fetchedAuthors$ | async | slice:0:3)"
+         (click)="chooseAuthor(author)">
+      {{ author.firstName }} {{ author.lastName }}
+    </div>
+  </div>
+</div>

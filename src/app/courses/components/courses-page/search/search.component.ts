@@ -1,6 +1,7 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, OnDestroy, OnInit, Output } from '@angular/core';
 import { Subject } from 'rxjs';
 import { debounceTime, filter, takeUntil } from 'rxjs/operators';
+import { FormControl } from '@angular/forms';
 
 export const INPUT_DEBOUNCE_TIME = 500;
 
@@ -13,21 +14,16 @@ export const INPUT_DEBOUNCE_TIME = 500;
 export class SearchComponent implements OnInit, OnDestroy {
   @Output() searchQuery: EventEmitter<string> = new EventEmitter<string>();
 
-  searchInput = '';
-  query$: Subject<string> = new Subject<string>();
+  searchControl: FormControl = new FormControl();
 
   private onDestroy$: Subject<void> = new Subject<void>();
 
   ngOnInit(): void {
-    this.query$.pipe(
+    this.searchControl.valueChanges.pipe(
       filter((query: string) => query.length >= 3 || !query.length),
       debounceTime(INPUT_DEBOUNCE_TIME),
       takeUntil(this.onDestroy$),
     ).subscribe((query: string) => this.searchQuery.emit(query));
-  }
-
-  search(): void {
-    this.query$.next(this.searchInput);
   }
 
   ngOnDestroy(): void {

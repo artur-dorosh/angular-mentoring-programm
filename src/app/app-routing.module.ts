@@ -9,11 +9,11 @@ const routes: Routes = [
     path: 'authorization',
     loadChildren: () => import('./auth/auth.module').then((module) => module.AuthModule)
   }, {
-    path: 'error/404',
+    path: 'error-page/404',
     loadChildren: () => import('./shared/shared.module').then((module) => module.SharedModule)
   }, {
     path: '**',
-    redirectTo: '/error/404'
+    redirectTo: '/error-page/404'
   }
 ];
 

@@ -1,33 +1,72 @@
 <div class="course">
   <div class="container">
-    <div class="course__block course__title">
-      <label for="title" class="course__title-header">Title</label>
-      <input type="text" id="title" class="course__title-input" [(ngModel)]="title">
-    </div>
-    <div class="course__block course__description">
-      <label for="description" class="course__description-header">Description</label>
-      <textarea id="description" class="course__description-input" [(ngModel)]="description"></textarea>
-    </div>
-    <div class="course__block course__date">
-      <label for="date" class="course__date-header">Date</label>
-      <input type="date" id="date" class="course__date-input" [(ngModel)]="date">
-    </div>
-    <div class="course__block course__duration">
-      <label for="duration" class="course__duration-header">Duration</label>
-      <input type="number" id="duration" class="course__duration-input" [(ngModel)]="duration">
-      <span class="course__duration-value" *ngIf="duration">{{ duration | duration }}</span>
-    </div>
-    <div class="course__block course__authors">
-      <div class="course__authors-header">Authors</div>
-    </div>
-    <div class="course__actions">
-      <button mat-button
-              class="course__save"
-              (click)="save()">
-        Save
-      </button>
-      <button mat-button class="course__cancel" routerLink="../">Cancel</button>
-    </div>
+    <form [formGroup]="form">
+      <div class="course__block course__title">
+        <label for="title" class="course__title-header">Title</label>
+        <input type="text"
+               id="title"
+               class="course__title-input"
+               formControlName="title"
+               [class.invalid]="form.get('title').dirty && form.get('title').invalid">
+        <p *ngIf="form.get('title').dirty && form.get('title').hasError('required')" class="error">
+          Title is required
+        </p>
+        <p *ngIf="form.get('title').dirty && form.get('title').hasError('maxlength')" class="error">
+          Title should not be more than 50 characters
+        </p>
+      </div>
+      <div class="course__block course__description">
+        <label for="description" class="course__description-header">Description</label>
+        <textarea
+          id="description"
+          class="course__description-input"
+          formControlName="description"
+          [class.invalid]="form.get('description').dirty && form.get('description').invalid">
+        </textarea>
+        <p *ngIf="form.get('description').dirty && form.get('description').hasError('required')"
+              class="error">
+          Description is required
+        </p>
+        <p *ngIf="form.get('description').dirty && form.get('description').hasError('maxlength')"
+              class="error">
+          Description should not be more than 500 characters
+        </p>
+      </div>
+      <div class="course__block course__date">
+        <label for="date" class="course__date-header">Date</label>
+        <app-date-control id="date" class="course__date-input" formControlName="creationDate"></app-date-control>
+        <p *ngIf="form.get('creationDate').dirty && form.get('creationDate').hasError('required')"
+              class="error">
+          Creating date is required
+        </p>
+      </div>
+      <div class="course__block course__duration">
+        <label for="duration" class="course__duration-header">Duration</label>
+        <app-duration-control id="duration" class="course__duration-input" formControlName="duration"></app-duration-control>
+        <span class="course__duration-value" *ngIf="form.get('duration').value">{{ form.get('duration').value | duration }}</span>
+        <p *ngIf="form.get('duration').dirty && form.get('duration').hasError('required')"
+              class="error">
+          Duration is required
+        </p>
+      </div>
+      <div class="course__block course__authors">
+        <div class="course__authors-header">Authors</div>
+        <app-authors-control formControlName="authors"></app-authors-control>
+        <p *ngIf="form.get('authors').dirty && form.get('authors').hasError('required')"
+           class="error">
+          Authors list should not be empty
+        </p>
+      </div>
+      <div class="course__actions">
+        <button mat-button
+                class="course__save"
+                [disabled]="form.invalid"
+                (click)="save()">
+          Save
+        </button>
+        <button mat-button class="course__cancel" routerLink="../">Cancel</button>
+      </div>
+    </form>
   </div>
 </div>
 
