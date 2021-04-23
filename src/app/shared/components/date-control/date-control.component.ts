@@ -53,6 +53,15 @@ export class DateControlComponent implements OnInit, OnDestroy, ControlValueAcce
   }
 
   ngOnInit(): void {
+    this.trackDate();
+  }
+
+  ngOnDestroy(): void {
+    this.onDestroy$.next();
+    this.onDestroy$.complete();
+  }
+
+  private trackDate(): void {
     this.date.valueChanges.pipe(
       takeUntil(this.onDestroy$),
     ).subscribe((value: string) => {
@@ -62,10 +71,5 @@ export class DateControlComponent implements OnInit, OnDestroy, ControlValueAcce
       const date = value && new Date(value);
       this.onChange(`${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`);
     });
-  }
-
-  ngOnDestroy(): void {
-    this.onDestroy$.next();
-    this.onDestroy$.complete();
   }
 }

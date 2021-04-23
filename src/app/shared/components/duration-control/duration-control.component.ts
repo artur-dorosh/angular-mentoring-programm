@@ -37,9 +37,7 @@ export class DurationControlComponent implements OnInit, OnDestroy, ControlValue
   }
 
   ngOnInit(): void {
-    this.duration.valueChanges.pipe(
-      takeUntil(this.onDestroy$),
-    ).subscribe((value: string) => this.onChange(value));
+    this.trackDuration();
   }
 
   ngOnDestroy(): void {
@@ -47,4 +45,9 @@ export class DurationControlComponent implements OnInit, OnDestroy, ControlValue
     this.onDestroy$.complete();
   }
 
+  private trackDuration(): void {
+    this.duration.valueChanges.pipe(
+      takeUntil(this.onDestroy$),
+    ).subscribe((value: string) => this.onChange(value));
+  }
 }
