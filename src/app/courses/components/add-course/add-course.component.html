@@ -2,21 +2,21 @@
   <div class="container">
     <form [formGroup]="form">
       <div class="course__block course__title">
-        <label for="title" class="course__title-header">Title</label>
+        <label for="title" class="course__title-header">{{ 'add_course_page.title' | translate }}</label>
         <input type="text"
                id="title"
                class="course__title-input"
                formControlName="title"
                [class.invalid]="form.get('title').dirty && form.get('title').invalid">
         <p *ngIf="form.get('title').dirty && form.get('title').hasError('required')" class="error">
-          Title is required
+          {{ 'add_course_page.title_required' | translate }}
         </p>
         <p *ngIf="form.get('title').dirty && form.get('title').hasError('maxlength')" class="error">
-          Title should not be more than 50 characters
+          {{ 'add_course_page.title_maxlength' | translate }}
         </p>
       </div>
       <div class="course__block course__description">
-        <label for="description" class="course__description-header">Description</label>
+        <label for="description" class="course__description-header">{{ 'add_course_page.description' | translate }}</label>
         <textarea
           id="description"
           class="course__description-input"
@@ -25,36 +25,36 @@
         </textarea>
         <p *ngIf="form.get('description').dirty && form.get('description').hasError('required')"
               class="error">
-          Description is required
+          {{ 'add_course_page.description_required' | translate }}
         </p>
         <p *ngIf="form.get('description').dirty && form.get('description').hasError('maxlength')"
               class="error">
-          Description should not be more than 500 characters
+          {{ 'add_course_page.description_maxlength' | translate }}
         </p>
       </div>
       <div class="course__block course__date">
-        <label for="date" class="course__date-header">Date</label>
+        <label for="date" class="course__date-header">{{ 'add_course_page.date' | translate }}</label>
         <app-date-control id="date" class="course__date-input" formControlName="creationDate"></app-date-control>
         <p *ngIf="form.get('creationDate').dirty && form.get('creationDate').hasError('required')"
               class="error">
-          Creating date is required
+          {{ 'add_course_page.date_required' | translate }}
         </p>
       </div>
       <div class="course__block course__duration">
-        <label for="duration" class="course__duration-header">Duration</label>
+        <label for="duration" class="course__duration-header">{{ 'add_course_page.duration' | translate }}</label>
         <app-duration-control id="duration" class="course__duration-input" formControlName="duration"></app-duration-control>
         <span class="course__duration-value" *ngIf="form.get('duration').value">{{ form.get('duration').value | duration }}</span>
         <p *ngIf="form.get('duration').dirty && form.get('duration').hasError('required')"
               class="error">
-          Duration is required
+          {{ 'add_course_page.duration_required' | translate }}
         </p>
       </div>
       <div class="course__block course__authors">
-        <div class="course__authors-header">Authors</div>
+        <div class="course__authors-header">{{ 'add_course_page.authors' | translate }}</div>
         <app-authors-control formControlName="authors"></app-authors-control>
         <p *ngIf="form.get('authors').dirty && form.get('authors').hasError('required')"
            class="error">
-          Authors list should not be empty
+          {{ 'add_course_page.authors_required' | translate }}
         </p>
       </div>
       <div class="course__actions">
@@ -62,9 +62,9 @@
                 class="course__save"
                 [disabled]="form.invalid"
                 (click)="save()">
-          Save
+          {{ 'add_course_page.save' | translate }}
         </button>
-        <button mat-button class="course__cancel" routerLink="../">Cancel</button>
+        <button mat-button class="course__cancel" routerLink="../">{{ 'add_course_page.cancel' | translate }}</button>
       </div>
     </form>
   </div>

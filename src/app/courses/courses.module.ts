@@ -12,7 +12,7 @@ import { BorderingDirective } from './directives/bordering.directive';
 import { DurationPipe } from './pipes/duration.pipe';
 import { OrderByPipe } from './pipes/order-by.pipe';
 import { ConfirmationDialogComponent } from './components/confirmation-dialog/confirmation-dialog.component';
-import { MatButtonModule, MatDialogModule } from '@angular/material';
+import { MatButtonModule, MatDialogModule, MatSelectModule } from '@angular/material';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
 import { AddCourseComponent } from './components/add-course/add-course.component';
@@ -23,6 +23,7 @@ import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { coursesFeatureKey, coursesReducer } from './state/courses.reducer';
 import { CoursesEffects } from './state/courses.effects';
+import { TranslateModule } from '@ngx-translate/core';
 
 export const routes: Routes = [
   {
@@ -68,6 +69,8 @@ export const routes: Routes = [
     StoreModule.forFeature(coursesFeatureKey, coursesReducer),
     EffectsModule.forFeature([CoursesEffects]),
     ReactiveFormsModule,
+    TranslateModule,
+    MatSelectModule,
   ],
   exports: [
     HeaderComponent,

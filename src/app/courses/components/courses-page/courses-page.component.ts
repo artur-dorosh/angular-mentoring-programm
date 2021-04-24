@@ -10,6 +10,7 @@ import { Store } from '@ngrx/store';
 import { ICoursesState } from '../../state/courses.reducer';
 import { selectCourses, selectCoursesLoading } from '../../state/courses.selectors';
 import * as CoursesActions from '../../state/courses.actions';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-courses-page',
@@ -27,6 +28,7 @@ export class CoursesPageComponent implements OnInit {
     private coursesService: CoursesService,
     private store: Store<ICoursesState>,
     private dialog: MatDialog,
+    private translateService: TranslateService
   ) { }
 
   ngOnInit(): void {
@@ -43,7 +45,7 @@ export class CoursesPageComponent implements OnInit {
       width: '400px',
       panelClass: 'confirmation-popup',
       data: {
-        header: 'Do you really want to delete this course?',
+        header: this.translateService.instant('confirmation.title'),
       }
     }).afterClosed().pipe(
       take(1),

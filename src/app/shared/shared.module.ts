@@ -14,6 +14,7 @@ import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { authorsFeatureKey, authorsReducer } from './state/authors.reducer';
 import { AuthorsEffects } from './state/authors.effects';
+import { TranslateModule } from '@ngx-translate/core';
 
 export const routes: Routes = [
   {
@@ -41,6 +42,7 @@ export const routes: Routes = [
     MatNativeDateModule,
     StoreModule.forFeature(authorsFeatureKey, authorsReducer),
     EffectsModule.forFeature([AuthorsEffects]),
+    TranslateModule,
   ],
   exports: [
     LoadingPageComponent,

@@ -1,0 +1,65 @@
+{
+	"add_course_page": {
+		"authors": "Authors",
+		"authors_required": "Authors list should not be empty",
+		"cancel": "Cancel",
+		"date": "Date",
+		"date_required": "Creating date is required",
+		"description": "Description",
+		"description_maxlength": "Description should not be more than 500 characters",
+		"description_required": "Description is required",
+		"duration": "Duration",
+		"duration_required": "Duration is required",
+		"save": "Save",
+		"title": "Title",
+		"title_maxlength": "Title should not be more than 50 characters",
+		"title_required": "Title is required"
+	},
+	"authors": {
+		"search": "Search author..."
+	},
+	"breadcrumbs": {
+		"courses": "Courses"
+	},
+	"confirmation": {
+		"no": "No",
+		"title": "Do you really want to delete this course?",
+		"yes": "Yes"
+	},
+	"duration": {
+		"hour": "h",
+		"minute": "min"
+	},
+	"error_page": {
+		"description": "Ooops... Something went wrong",
+		"title": "404. Not Found!"
+	},
+	"footer": {
+		"copyright": "Copyright © Video courses. All rights reserved"
+	},
+	"header": {
+		"login": "User login",
+		"logoff": "Log off"
+	},
+	"languages": {
+		"en": "English",
+		"ru": "Russian"
+	},
+	"login_page": {
+		"email": "E-mail",
+		"email_required": "Email is required",
+		"forgot_password": "Forgot password?",
+		"login": "Login",
+		"password": "Password",
+		"password_required": "Password is required"
+	},
+	"main_page": {
+		"add_course": "Add course",
+		"delete_course": "Delete",
+		"edit_course": "Edit",
+		"load_more": "Load more",
+		"logo": "Video courses",
+		"no_data": "No data. Feel free to add new course",
+		"search": "Search course..."
+	}
+}

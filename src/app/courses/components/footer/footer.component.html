@@ -1,7 +1,15 @@
 <div class="footer">
   <div class="container">
     <div class="footer-block">
-      Copyright © Videocourses. All rights reserved
+      <div class="footer-block__languages">
+        <select [formControl]="languageControl" class="footer-block__languages-select">
+          <option value="en">{{ 'languages.en' | translate }}</option>
+          <option value="ru">{{ 'languages.ru' | translate }}</option>
+        </select>
+      </div>
+      <div class="footer-block__copyright">
+        {{ 'footer.copyright' | translate }}
+      </div>
     </div>
   </div>
 </div>

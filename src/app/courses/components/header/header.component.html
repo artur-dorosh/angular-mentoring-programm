@@ -5,13 +5,13 @@
       <div class="authorization">
         <div class="login" *ngIf="!(isLoggedIn$ | async)" routerLink="authorization/login">
           <span class="material-icons login__icon">person</span>
-          User login
+          {{ 'header.login' | translate }}
         </div>
         <div class="logged-in" *ngIf="isLoggedIn$ | async">
           <div class="user">{{ (currentUser$ | async).email }}</div>
           <button class="logout" (click)="logout()" routerLink="/login">
             <span class="material-icons logout__icon">exit_to_app</span>
-            Log off
+            {{ 'header.logoff' | translate }}
           </button>
         </div>
       </div>

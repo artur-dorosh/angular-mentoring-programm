@@ -9,7 +9,8 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "coverage": "ng test --code-coverage",
-    "start-be": "json-server --watch db.json"
+    "start-be": "json-server --watch db.json",
+    "extract-i18n": "ngx-translate-extract -i ./src -o src/assets/i18n/en.json --sort --format namespaced-json"
   },
   "private": true,
   "dependencies": {
@@ -23,10 +24,13 @@
     "@angular/platform-browser": "~9.1.13",
     "@angular/platform-browser-dynamic": "~9.1.13",
     "@angular/router": "~9.1.13",
+    "@biesbjerg/ngx-translate-extract": "^7.0.4",
     "@ngrx/effects": "^9.2.1",
     "@ngrx/entity": "^9.2.1",
     "@ngrx/store": "^9.2.1",
     "@ngrx/store-devtools": "^9.2.1",
+    "@ngx-translate/core": "^12.1.2",
+    "@ngx-translate/http-loader": "^5.0.0",
     "json-server": "^0.16.3",
     "rxjs": "~6.6.3",
     "tslib": "^1.10.0",

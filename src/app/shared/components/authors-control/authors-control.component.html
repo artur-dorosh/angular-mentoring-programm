@@ -4,7 +4,7 @@
     <span class="material-icons close-icon" (click)="removeAuthor(pickedAuthor)">close</span>
   </div>
 
-  <input type="text" class="authors" placeholder="Search author..."
+  <input type="text" class="authors" placeholder="{{ 'authors.search' | translate }}"
          (focus)="toggleAuthorsList()"
          [formControl]="authorInput">
 

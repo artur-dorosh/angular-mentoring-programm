@@ -9,8 +9,20 @@
   background: $color-main-dark-blue;
 
   &-block {
-    color: $color-grey-40;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
     font-size: 16px;
-    text-align: right;
+    color: $color-grey-40;
+
+    &__languages-select {
+      padding: 5px 5px 5px 10px;
+      width: 150px;
+      height: 35px;
+      font-size: 16px;
+      border-radius: 4px;
+      outline: none;
+      cursor: pointer;
+    }
   }
 }
