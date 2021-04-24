@@ -2,7 +2,7 @@
   <div class="container">
     <div class="breadcrumbs-block">
       <div class="breadcrumbs__item pointer" routerLink="/courses">
-        Courses
+        {{ 'breadcrumbs.courses' | translate }}
       </div>
       <div class="breadcrumbs__item" *ngIf="courseTitle$ | async">
         &nbsp;/&nbsp;{{ courseTitle$ | async }}

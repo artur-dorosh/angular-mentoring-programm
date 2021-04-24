@@ -1,10 +1,10 @@
 <div class="login">
   <div class="login-form">
-    <div class="login-form__header">Login</div>
+    <div class="login-form__header">{{ 'login_page.login' | translate }}</div>
 
     <div class="login-form__content" [formGroup]="loginForm">
       <div class="login-form__block">
-        <label for="email" class="login-form__block-label">E-mail:</label>
+        <label for="email" class="login-form__block-label">{{ 'login_page.email' | translate }}:</label>
         <input type="email"
                id="email"
                class="login-form__block-input email"
@@ -13,11 +13,11 @@
                [class.invalid]="loginForm.get('email').dirty && loginForm.get('email').invalid">
         <p *ngIf="loginForm.get('email').dirty && loginForm.get('email').hasError('required')"
               class="error">
-          Email is required
+          {{ 'login_page.email_required' | translate }}
         </p>
       </div>
       <div class="login-form__block">
-        <label for="password" class="login-form__block-label">Password:</label>
+        <label for="password" class="login-form__block-label">{{ 'login_page.password' | translate }}:</label>
         <input type="password"
                id="password"
                class="login-form__block-input password"
@@ -26,17 +26,17 @@
                [class.invalid]="loginForm.get('password').dirty && loginForm.get('password').hasError('required')">
         <p *ngIf="loginForm.get('password').dirty && loginForm.get('password').hasError('required')"
               class="error">
-          Password is required
+          {{ 'login_page.password_required' | translate }}
         </p>
       </div>
     </div>
 
     <div class="login-form__footer">
-      <div class="login-form__forgot">Forgot password?</div>
+      <div class="login-form__forgot">{{ 'login_page.forgot_password' | translate }}</div>
       <button class="login-form__login-btn"
               [disabled]="loginForm.invalid"
               (click)="login()">
-        Login
+        {{ 'login_page.login' | translate }}
       </button>
     </div>
   </div>

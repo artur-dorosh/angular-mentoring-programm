@@ -15,7 +15,7 @@ export class ApiInterceptor implements HttpInterceptor {
   // tslint:disable-next-line:no-any
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     const apiRequest = request.clone({
-      url: `${BASE_API_URL}${request.url}`
+      url: !request.url.includes('/i18n/') ? `${BASE_API_URL}${request.url}` : request.url
     });
 
     return next.handle(apiRequest);

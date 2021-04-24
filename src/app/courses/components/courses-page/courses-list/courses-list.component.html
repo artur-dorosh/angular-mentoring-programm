@@ -9,11 +9,11 @@
                          (edit)="onEdit($event)">
         </app-course-item>
 
-        <div class="load-more" (click)="onLoadMore()">Load more</div>
+        <div class="load-more" (click)="onLoadMore()">{{ 'main_page.load_more' | translate }}</div>
       </ng-container>
 
       <div class="no-data" *ngIf="!courses?.length">
-        {{ 'No data. Feel free to add new course' | uppercase }}
+        {{ 'main_page.no_data' | translate | uppercase }}
       </div>
     </div>
   </div>

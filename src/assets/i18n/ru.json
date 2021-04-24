@@ -1,0 +1,65 @@
+{
+	"add_course_page": {
+		"authors": "Авторы",
+		"authors_required": "Поле авторы обязательно к заполнению",
+		"cancel": "Отмена",
+		"date": "Дата",
+		"date_required": "Дата создания обязательна к заполнению",
+		"description": "Описание",
+		"description_maxlength": "Длина описания не должна превышать 500 символов",
+		"description_required": "Описание обязательно к заполнению",
+		"duration": "Длительность",
+		"duration_required": "Длительность обязательна к заполнению",
+		"save": "Сохранить",
+		"title": "Заголовок",
+		"title_maxlength": "Длина заголовка не должна превышать 50 символов",
+		"title_required": "Заголовок обязателен к заполнению"
+	},
+	"authors": {
+		"search": "Искать автора..."
+	},
+	"breadcrumbs": {
+		"courses": "Курсы"
+	},
+	"confirmation": {
+		"no": "Нет",
+		"title": "Вы точно хотите удалить этот курс?",
+		"yes": "Да"
+	},
+	"duration": {
+		"hour": "ч",
+		"minute": "мин"
+	},
+	"error_page": {
+		"description": "Упссс... Что-то пошло не так",
+		"title": "404. Не найдено!"
+	},
+	"footer": {
+		"copyright": "Copyright © Видеокурсы. Все права защищены"
+	},
+	"header": {
+		"login": "Войти",
+		"logoff": "Выйти"
+	},
+	"languages": {
+		"en": "Английский",
+		"ru": "Русский"
+	},
+	"login_page": {
+		"email": "E-mail",
+		"email_required": "E-mail обязателен к заполнению",
+		"forgot_password": "Забыли пароль?",
+		"login": "Войти",
+		"password": "Пароль",
+		"password_required": "Пароль обязателен к заполнению"
+	},
+	"main_page": {
+		"add_course": "Добавить курс",
+		"delete_course": "Удалить",
+		"edit_course": "Редактировать",
+		"load_more": "Загрузить больше",
+		"logo": "Видео курсы",
+		"no_data": "Нет данных. Не стесняйтесь добавить новый курс",
+		"search": "Искать курс..."
+	}
+}
